@@ -25,7 +25,7 @@ function createEntryPoint(obj, entryPath) {
 
 	obj[entryName] = [
 		path.join(cfg.dir.absolute.pages, entryPath),
-		`file?name=${path.join(entryName, cfg.file.bundle.html)}!extract!html?attrs[]=img:src&root=${cfg.dir.source}!passthough!${path.join('pages', entryName, cfg.file.bundle.ejs)}`,
+		`file?name=${path.join(entryName, cfg.file.bundle.html)}!extract!html?attrs[]=img:src&root=${cfg.dir.source}!@raypatterson/passthough-loader!${path.join('pages', entryName, cfg.file.bundle.ejs)}`,
 		hmr,
 		wds
 	];
