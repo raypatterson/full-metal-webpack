@@ -51,6 +51,7 @@
     "yargs": "^4.7.0"
   },
   "devDependencies": {
+    "@raypatterson/passthough-loader": "github:raypatterson/passthough-loader",
     "blue-tape": "^0.2.0",
     "commitizen": "^2.8.1",
     "cz-conventional-changelog": "^1.1.6",
