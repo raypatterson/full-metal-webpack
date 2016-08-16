@@ -15,7 +15,8 @@
       "path": "./node_modules/cz-conventional-changelog"
     },
     "ghooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run test"
     },
     "links": [
       "../passthough-loader"
@@ -33,22 +34,21 @@
     "commander": "^2.9.0",
     "css-loader": "^0.23.1",
     "deep-freeze": "0.0.1",
-    "ejs-html-loader": "^1.2.2",
+    "ejs-html-loader": "^2.0.2",
     "execa": "^0.4.0",
     "extract-loader": "0.0.2",
     "extract-text-webpack-plugin": "^1.0.1",
-    "file-loader": "^0.8.5",
+    "file-loader": "^0.9.0",
     "fs-jetpack": "^0.9.0",
-    "globby": "^4.0.0",
+    "globby": "^6.0.0",
     "html-loader": "^0.4.3",
     "lodash": "^4.12.0",
     "node-sass": "^3.7.0",
     "open-browser-webpack-plugin": "0.0.2",
     "pkg-up": "^1.0.0",
     "preprocessor-loader": "^1.0.5",
-    "sass-loader": "^3.2.0",
+    "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
-    "updtr": "^0.1.14",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1",
@@ -63,12 +63,12 @@
     "ghooks": "^1.2.1",
     "json-loader": "^0.5.4",
     "linkr": "^0.1.0",
-    "updtr": "^0.1.10",
-    "xo": "^0.15.0"
+    "updtr": "^0.2.1",
+    "xo": "^0.16.0"
   },
   "engines": {
-    "node": ">=5.11.0",
-    "npm": ">=3.8.7"
+    "node": ">=6.1.0",
+    "npm": ">=3.10.0"
   },
   "homepage": "https://github.com/raypatterson/full-metal-webpack/",
   "keywords": [
