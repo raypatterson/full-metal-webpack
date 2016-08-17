@@ -10,3 +10,4 @@
 [] Add Browsersync server
 [] Add more template choices server
 [] Add interactive CLI
+[] Add dashboard
