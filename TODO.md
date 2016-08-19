@@ -10,4 +10,4 @@
 [] Add Browsersync server
 [] Add more template choices server
 [] Add interactive CLI
-[] Add dashboard
+[] Add dashboard https://github.com/FormidableLabs/webpack-dashboard
