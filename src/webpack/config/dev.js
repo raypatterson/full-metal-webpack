@@ -18,14 +18,21 @@ const hmr = path.join(cfg.dir.pkg.root, cfg.dir.node, 'webpack/hot/dev-server');
 const wds = `${path.join(cfg.dir.pkg.root, cfg.dir.node, 'webpack-dev-server/client')}?${cfg.server.url}/`;
 
 let entryName;
+let entryJs;
+let entryHtml;
+let entryTmpl;
 
 function createEntryPoint(obj, entryPath) {
 
 	entryName = path.dirname(entryPath);
 
+	entryJs = path.join(cfg.dir.absolute.pages, entryPath);
+	entryHtml = path.join(entryName, cfg.file.bundle.html);
+	entryTmpl = path.join('pages', entryName, cfg.file.bundle.tmpl);
+
 	obj[entryName] = [
-		path.join(cfg.dir.absolute.pages, entryPath),
-		`file?name=${path.join(entryName, cfg.file.bundle.html)}!extract!html?attrs[]=img:src&root=${cfg.dir.source}!@raypatterson/passthough-loader!${path.join('pages', entryName, cfg.file.bundle.ejs)}`,
+		entryJs,
+		`file?name=${entryHtml}!extract!html?attrs[]=img:src&root=${cfg.dir.source}!@raypatterson/passthough-loader!${entryTmpl}`,
 		hmr,
 		wds
 	];

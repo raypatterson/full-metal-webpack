@@ -1,21 +1,14 @@
 'use strict';
 
 const config = {
-
+	index: 'index',
 	config: 'config',
-
-	bundle: [
-		'js',
-		'css',
-		'html',
-		'ejs'
-	].reduce((obj, ext) => {
-
-		obj[ext] = `index.${ext}`;
-
-		return obj;
-
-	}, {})
+	extensions: {
+		js: 'js',
+		css: 'css',
+		html: 'html',
+		tmpl: 'ejs'
+	}
 };
 
 module.exports = config;
