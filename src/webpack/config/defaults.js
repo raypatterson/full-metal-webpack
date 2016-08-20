@@ -8,6 +8,12 @@ const cfg = require('../../../cfg');
  *  Config
  */
 
+const modulesDirectories = [
+	cfg.dir.node,
+	cfg.dir.local,
+	cfg.dir.source
+];
+
 const webpackConfig = {
 	entry: {},
 	context: cfg.dir.absolute.source,
@@ -22,18 +28,12 @@ const webpackConfig = {
 			'',
 			'.js'
 		],
-		modulesDirectories: [
-			cfg.dir.node,
-			cfg.dir.local,
-			cfg.dir.source
-		]
+		modulesDirectories
 	},
 	// Resolve Package loaders
 	resolveLoader: {
 		root: cfg.dir.pkg.root,
-		modulesDirectories: [
-			path.join(cfg.dir.pkg.root, cfg.dir.node)
-		]
+		modulesDirectories
 	},
 	plugins: [],
 	module: {
