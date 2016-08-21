@@ -3,7 +3,6 @@
 const path = require('path');
 const glob = require('globby');
 const webpack = require('webpack');
-const fs = require('fs-jetpack');
 const _ = require('lodash');
 const reqAll = require('req-all');
 
@@ -69,7 +68,7 @@ webpackConfig.passthough = {
 
 		const common = cfg.public.data;
 
-		callback(null, _.template(fs.read(loader.resourcePath))({
+		callback(null, cfg.template(loader, {
 			locals,
 			common
 		}));

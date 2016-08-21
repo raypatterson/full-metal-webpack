@@ -11,3 +11,4 @@
 [] Add more template choices server
 [] Add interactive CLI
 [] Add dashboard https://github.com/FormidableLabs/webpack-dashboard
+[] Check out https://github.com/mdreizin/webpack-config
