@@ -5,6 +5,7 @@ const glob = require('globby');
 const webpack = require('webpack');
 const _ = require('lodash');
 const reqAll = require('req-all');
+const WebpackVisualizerPlugin = require('webpack-visualizer-plugin');
 
 const getEntryData = require('../utils/get-entry-data');
 
@@ -82,5 +83,9 @@ _.each(reqAll('../plugins'), loader => loader(webpackConfig));
 webpackConfig.plugins.push(new webpack.optimize.OccurrenceOrderPlugin(true));
 webpackConfig.plugins.push(new webpack.NoErrorsPlugin());
 webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
+
+webpackConfig.plugins.push(new WebpackVisualizerPlugin({
+	filename: './stats/wpv/index.html'
+}));
 
 module.exports = webpackConfig;
