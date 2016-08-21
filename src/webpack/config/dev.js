@@ -5,6 +5,7 @@ const glob = require('globby');
 const webpack = require('webpack');
 const fs = require('fs-jetpack');
 const _ = require('lodash');
+const reqAll = require('req-all');
 
 const getEntryData = require('../utils/get-entry-data');
 
@@ -36,8 +37,6 @@ function createEntryPoint(obj, entryPath) {
 		hmr,
 		wds
 	];
-
-	webpackConfig.commonChunks.push(entryName);
 
 	return obj;
 
@@ -78,15 +77,8 @@ webpackConfig.passthough = {
 	}
 };
 
-require('../loaders/css')(webpackConfig);
-require('../loaders/json')(webpackConfig);
-require('../loaders/fonts')(webpackConfig);
-require('../loaders/images')(webpackConfig);
-
-require('../plugins/debug-flag')(webpackConfig);
-require('../plugins/common-chunks')(webpackConfig);
-require('../plugins/clean-dest')(webpackConfig);
-require('../plugins/open-browser')(webpackConfig);
+_.each(reqAll('../loaders'), loader => loader(webpackConfig));
+_.each(reqAll('../plugins'), loader => loader(webpackConfig));
 
 webpackConfig.plugins.push(new webpack.optimize.OccurrenceOrderPlugin(true));
 webpackConfig.plugins.push(new webpack.NoErrorsPlugin());

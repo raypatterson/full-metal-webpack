@@ -2,8 +2,7 @@
 
 const path = require('path');
 const pkgup = require('pkg-up');
-const argv = require('yargs')
-	.argv;
+const argv = require('yargs').argv;
 
 const source = 'src';
 const common = 'common';

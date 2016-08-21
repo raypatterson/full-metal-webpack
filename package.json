@@ -49,11 +49,13 @@
     "open-browser-webpack-plugin": "0.0.2",
     "pkg-up": "^1.0.0",
     "preprocessor-loader": "^1.0.5",
+    "req-all": "^0.1.0",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1",
+    "webpack-validator": "^2.2.7",
     "yargs": "^4.7.0"
   },
   "devDependencies": {

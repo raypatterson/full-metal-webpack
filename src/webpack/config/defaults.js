@@ -41,8 +41,7 @@ const webpackConfig = {
 		loaders: [],
 		postLoaders: []
 	},
-	devtool: '#inline-source-map',
-	commonChunks: []
+	devtool: '#inline-source-map'
 };
 
 module.exports = webpackConfig;

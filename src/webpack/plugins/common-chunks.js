@@ -10,7 +10,13 @@ module.exports = webpackConfig => {
 	webpackConfig.plugins.push(new webpack.optimize.CommonsChunkPlugin({
 		name: cfg.dir.common,
 		filename: path.join(cfg.wp.outputName, cfg.file.bundle.js),
-		chunks: webpackConfig.commonChunks
+		chunks: Object.keys(webpackConfig.entry).reduce((arr, key) => {
+
+			arr.push(key);
+
+			return arr;
+
+		}, [])
 	}));
 
 };
