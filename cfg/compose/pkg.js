@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = config => require(config.dir.pkg.path);
+module.exports = config => require(config.file.pkg.path);

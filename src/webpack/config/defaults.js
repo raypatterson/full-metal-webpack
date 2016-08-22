@@ -11,22 +11,22 @@ const cfg = require('../../../cfg');
 const defaultFilename = path.join(cfg.wp.outputName, cfg.file.bundle.js);
 
 const modulesDirectories = [
-	cfg.dir.node,
-	cfg.dir.local,
-	cfg.dir.source
+	cfg.file.node,
+	cfg.file.local,
+	cfg.file.source
 ];
 
 const webpackConfig = {
 	entry: {},
-	context: cfg.dir.absolute.source,
+	context: cfg.file.absolute.source,
 	output: {
-		path: cfg.dir.absolute.dest,
+		path: cfg.file.absolute.dest,
 		filename: defaultFilename,
 		chunkFilename: defaultFilename,
 		publicPath: cfg.wp.publicPath
 	},
 	resolve: {
-		root: cfg.dir.cwd,
+		root: cfg.file.cwd,
 		extensions: [
 			'',
 			'.js'
@@ -35,7 +35,7 @@ const webpackConfig = {
 	},
 	// Resolve Package loaders
 	resolveLoader: {
-		root: cfg.dir.pkg.root,
+		root: cfg.file.pkg.root,
 		modulesDirectories
 	},
 	plugins: [],

@@ -21,7 +21,7 @@ module.exports = function fmw(options) {
 
 		const server = new WebpackDevServer(compiler, {
 
-			// contentBase: options.cfg.dir.dest,
+			// contentBase: options.cfg.file.dest,
 			hot: true,
 			quiet: false,
 			noInfo: false,

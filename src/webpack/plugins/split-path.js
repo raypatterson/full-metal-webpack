@@ -7,10 +7,10 @@ const cfg = require('../../../cfg');
 module.exports = webpackConfig => {
 
 	webpackConfig.plugins.push(new SplitByPathPlugin([{
-		name: cfg.dir.vendor,
-		path: cfg.dir.absolute.node
+		name: cfg.file.vendor,
+		path: cfg.file.absolute.node
 	}], {
-		manifest: cfg.dir.manifest
+		manifest: cfg.file.manifest
 	}));
 
 };

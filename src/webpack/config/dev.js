@@ -14,8 +14,8 @@ const webpackConfigDefault = require('./defaults');
 
 const webpackConfig = Object.assign({}, webpackConfigDefault);
 
-const hmr = path.join(cfg.dir.pkg.root, cfg.dir.node, 'webpack/hot/dev-server');
-const wds = `${path.join(cfg.dir.pkg.root, cfg.dir.node, 'webpack-dev-server/client')}?${cfg.server.url}/`;
+const hmr = path.join(cfg.file.pkg.root, cfg.file.node, 'webpack/hot/dev-server');
+const wds = `${path.join(cfg.file.pkg.root, cfg.file.node, 'webpack-dev-server/client')}?${cfg.server.url}/`;
 
 let entryName;
 let entryJs;
@@ -26,13 +26,13 @@ function createEntryPoint(obj, entryPath) {
 
 	entryName = path.dirname(entryPath);
 
-	entryJs = path.join(cfg.dir.absolute.pages, entryPath);
+	entryJs = path.join(cfg.file.absolute.pages, entryPath);
 	entryHtml = path.join(entryName, cfg.file.bundle.html);
 	entryTmpl = path.join('pages', entryName, cfg.file.bundle.tmpl);
 
 	obj[entryName] = [
 		entryJs,
-		`file?name=${entryHtml}!extract!html?attrs[]=img:src&root=${cfg.dir.source}!@raypatterson/passthough-loader!${entryTmpl}`,
+		`file?name=${entryHtml}!extract!html?attrs[]=img:src&root=${cfg.file.source}!@raypatterson/passthough-loader!${entryTmpl}`,
 		hmr,
 		wds
 	];
@@ -43,7 +43,7 @@ function createEntryPoint(obj, entryPath) {
 
 webpackConfig.entry = glob.sync(
 		cfg.pattern.js, {
-			cwd: cfg.dir.absolute.pages
+			cwd: cfg.file.absolute.pages
 		})
 	.reduce(createEntryPoint, {});
 
@@ -61,7 +61,7 @@ webpackConfig.passthough = {
 		}
 
 		const resourceDir = path.dirname(loader.resourcePath);
-		const localsPath = path.relative(cfg.dir.absolute.pages, resourceDir);
+		const localsPath = path.relative(cfg.file.absolute.pages, resourceDir);
 
 		const locals = getEntryData(resourceDir, cfg.file.config);
 		locals.path = localsPath === '' ? '' : `/${localsPath}`;

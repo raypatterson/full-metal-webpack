@@ -9,11 +9,11 @@ module.exports = webpackConfig => {
 
 	webpackConfig.sassLoader = {
 		includePaths: [
-			cfg.dir.node,
-			cfg.dir.local,
-			cfg.dir.source
+			cfg.file.node,
+			cfg.file.local,
+			cfg.file.source
 		],
-		root: cfg.dir.source,
+		root: cfg.file.source,
 		outputStyle: 'expanded'
 	};
 

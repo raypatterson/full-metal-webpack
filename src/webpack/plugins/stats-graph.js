@@ -7,7 +7,7 @@ const cfg = require('../../../cfg');
 module.exports = webpackConfig => {
 
 	webpackConfig.plugins.push(new WebpackVisualizerPlugin({
-		filename: `${cfg.dir.reports}/wp/index.html`
+		filename: `${cfg.file.reports}/wp/index.html`
 	}));
 
 };

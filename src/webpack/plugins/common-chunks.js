@@ -8,7 +8,7 @@ const cfg = require('../../../cfg');
 module.exports = webpackConfig => {
 
 	webpackConfig.plugins.push(new webpack.optimize.CommonsChunkPlugin({
-		name: cfg.dir.common,
+		name: cfg.file.common,
 		filename: path.join(cfg.wp.outputName, cfg.file.bundle.js),
 		chunks: Object.keys(webpackConfig.entry).reduce((arr, key) => {
 
