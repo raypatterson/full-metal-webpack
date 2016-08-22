@@ -55,9 +55,10 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1",
+    "webpack-split-by-path": "^0.1.0",
     "webpack-validator": "^2.2.7",
     "webpack-visualizer-plugin": "^0.1.5",
-    "yargs": "^4.7.0"
+    "yargs": "^5.0.0"
   },
   "devDependencies": {
     "blue-tape": "^0.2.0",

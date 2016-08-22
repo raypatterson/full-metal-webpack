@@ -11,4 +11,12 @@
 [] Add more template choices server
 [] Add interactive CLI
 [] Add dashboard https://github.com/FormidableLabs/webpack-dashboard
-[] Check out https://github.com/mdreizin/webpack-config
+[] Investigate https://github.com/mdreizin/webpack-config
+[] Investigate https://github.com/ericclemmons/terse-webpack
+[] Investigate https://github.com/kentcdodds/webpack-config-utils
+[] Investigate https://github.com/jsdf/webpack-combine-loaders
+[] Investigate https://github.com/webpack/compression-webpack-plugin
+[] Investigate https://github.com/danethurber/webpack-manifest-plugin
+[] Investigate https://github.com/kossnocorp/assets-webpack-plugin
+[] Investigate https://github.com/diurnalist/chunk-manifest-webpack-plugin
+[] Investigate https://github.com/nickjj/manifest-revision-webpack-plugin

@@ -6,13 +6,20 @@ const argv = require('yargs').argv;
 
 const source = 'src';
 const common = 'common';
+const manifest = 'manifest';
+const vendor = 'vendor';
+const reports = 'reports';
 const dist = 'dist';
 const temp = '.tmp';
 const dump = path.join(source, '.dmp');
+const dest = argv.production ? dist : temp;
 
 const config = {
 
-	// Application & Presentation
+	/**
+	 *  Application & Presentation
+	 */
+
 	// Presentation layer source
 	source,
 
@@ -26,10 +33,21 @@ const config = {
 	dist,
 	temp,
 	dump,
-	dest: argv.production ? dist : temp,
+	dest,
 
 	// Assets common to all app entry points
 	common,
+
+	// 3rd party vendor libraries
+	vendor,
+
+	/**
+	 * TODO: Figure out why a manifest needs to be split out...
+	 */
+	manifest,
+
+	// Reports, graphs, etc.
+	reports,
 
 	// These 'common' map 1:1 from source to dest, and so are useful for copying
 	favicons: path.join(common, 'favicons'),

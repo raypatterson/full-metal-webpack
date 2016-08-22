@@ -5,7 +5,6 @@ const glob = require('globby');
 const webpack = require('webpack');
 const _ = require('lodash');
 const reqAll = require('req-all');
-const WebpackVisualizerPlugin = require('webpack-visualizer-plugin');
 
 const getEntryData = require('../utils/get-entry-data');
 
@@ -77,15 +76,32 @@ webpackConfig.passthough = {
 	}
 };
 
+/**
+ * Import loader presets
+ * TODO: Import project loaders
+ */
 _.each(reqAll('../loaders'), loader => loader(webpackConfig));
-_.each(reqAll('../plugins'), loader => loader(webpackConfig));
 
+/**
+ * Import plugin presets (order matters)
+ * TODO: Import project plugins
+ */
 webpackConfig.plugins.push(new webpack.optimize.OccurrenceOrderPlugin(true));
-webpackConfig.plugins.push(new webpack.NoErrorsPlugin());
 webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
+webpackConfig.plugins.push(new webpack.NoErrorsPlugin());
 
-webpackConfig.plugins.push(new WebpackVisualizerPlugin({
-	filename: './stats/wpv/index.html'
-}));
+[
+	'../plugins/clean-dest',
+	'../plugins/debug-flag',
+	'../plugins/common-chunks',
+	'../plugins/split-path',
+	'../plugins/stats-graph',
+	'../plugins/open-browser'
+
+].forEach(pluginPath => {
+
+	require(pluginPath)(webpackConfig);
+
+});
 
 module.exports = webpackConfig;

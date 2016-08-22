@@ -8,6 +8,8 @@ const cfg = require('../../../cfg');
  *  Config
  */
 
+const defaultFilename = path.join(cfg.wp.outputName, cfg.file.bundle.js);
+
 const modulesDirectories = [
 	cfg.dir.node,
 	cfg.dir.local,
@@ -19,7 +21,8 @@ const webpackConfig = {
 	context: cfg.dir.absolute.source,
 	output: {
 		path: cfg.dir.absolute.dest,
-		filename: path.join(cfg.wp.outputName, cfg.file.bundle.js),
+		filename: defaultFilename,
+		chunkFilename: defaultFilename,
 		publicPath: cfg.wp.publicPath
 	},
 	resolve: {
