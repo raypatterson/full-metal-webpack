@@ -40,7 +40,10 @@ const webpackConfig = {
 	// Resolve Package loaders
 	resolveLoader: {
 		root,
-		modulesDirectories
+		modulesDirectories,
+		fallback: [
+			path.join(root, cfg.file.node)
+		]
 	},
 	plugins: [],
 	module: {

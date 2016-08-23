@@ -14,8 +14,6 @@ module.exports = function addPlugins(webpackConfig) {
 			})
 		.reduce((entryObject, entryPath) => {
 
-			console.log('entryPath', entryPath);
-
 			return addEntryPoint(entryObject, entryPath, webpackConfig);
 
 		}, {});

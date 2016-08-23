@@ -5,11 +5,12 @@ const pkgup = require('pkg-up');
 
 const cfg = require('@raypatterson/sws-config');
 
-module.exports = function getDevFiles() {
+module.exports = function getDevFiles(webpackConfig) {
 
-	const root = path.dirname(pkgup.sync(__dirname));
-
-	const nodeModules = path.join(root, cfg.file.node);
+	const packageRoot = path.dirname(pkgup.sync(__dirname));
+	const entryContext = webpackConfig.context;
+	const relativePath = path.relative(entryContext, packageRoot);
+	const nodeModules = path.join(relativePath, cfg.file.node);
 
 	return [
 		path.join(nodeModules, 'webpack/hot/dev-server'),
