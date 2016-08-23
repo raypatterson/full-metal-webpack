@@ -3,9 +3,9 @@
 const WebpackDevServer = require('webpack-dev-server');
 const webpack = require('webpack');
 
-const webpackConfig = require('../webpack.config');
+const cfg = require('@raypatterson/sws-config');
 
-const cfg = require('./config');
+const webpackConfig = require('../webpack.config');
 
 module.exports = function fmw(options) {
 

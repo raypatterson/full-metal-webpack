@@ -1,12 +1,15 @@
 'use strict';
 
 const path = require('path');
+const pkgup = require('pkg-up');
 
-const cfg = require('../../config');
+const cfg = require('@raypatterson/sws-config');
 
 module.exports = function getDevFiles() {
 
-	const nodeModules = path.join(cfg.file.pkg.root, cfg.file.node);
+	const root = path.dirname(pkgup.sync(__dirname));
+
+	const nodeModules = path.join(root, cfg.file.node);
 
 	return [
 		path.join(nodeModules, 'webpack/hot/dev-server'),

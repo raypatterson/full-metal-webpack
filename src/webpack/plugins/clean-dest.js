@@ -2,7 +2,7 @@
 
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-const cfg = require('../../config');
+const cfg = require('@raypatterson/sws-config');
 
 module.exports = webpackConfig => {
 

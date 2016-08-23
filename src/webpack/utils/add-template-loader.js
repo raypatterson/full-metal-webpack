@@ -3,7 +3,7 @@
 const path = require('path');
 const combineLoaders = require('webpack-combine-loaders');
 
-const cfg = require('../../config');
+const cfg = require('@raypatterson/sws-config');
 
 const getEntryData = require('./get-entry-data');
 

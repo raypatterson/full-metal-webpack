@@ -2,7 +2,7 @@
 
 const path = require('path');
 
-const cfg = require('../../config');
+const cfg = require('@raypatterson/sws-config');
 
 const devFiles = require('./get-dev-files')();
 

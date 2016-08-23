@@ -1,6 +1,6 @@
 'use strict';
 
-const cfg = require('../../config');
+const cfg = require('@raypatterson/sws-config');
 
 module.exports = webpackConfig => {
 

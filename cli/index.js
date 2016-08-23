@@ -2,11 +2,12 @@
 
 const program = require('commander');
 
+const cfg = require('@raypatterson/sws-config');
+
 const api = require('../src');
-const cfg = require('../src/config');
 
 program
-	.version(cfg.pkg.version)
+	.version('zero')
 	.usage('fmw [options]')
 	.option('-d, --debug', 'Enable debug mode')
 	.option('-p, --production', 'Package for release')

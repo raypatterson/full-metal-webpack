@@ -5,7 +5,7 @@ const glob = require('globby');
 const reqAll = require('req-all');
 const webpack = require('webpack');
 
-const cfg = require('../config');
+const cfg = require('@raypatterson/sws-config');
 
 const addEntryPoint = require('./utils/add-entry-point');
 

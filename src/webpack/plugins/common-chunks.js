@@ -3,7 +3,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const cfg = require('../../config');
+const cfg = require('@raypatterson/sws-config');
 
 module.exports = webpackConfig => {
 

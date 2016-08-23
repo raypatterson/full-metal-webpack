@@ -19,7 +19,8 @@
       "pre-push": "npm run test"
     },
     "links": [
-      "../passthough-loader"
+      "../passthough-loader",
+      "../sws-config"
     ]
   },
   "contributors": [
@@ -29,14 +30,12 @@
     }
   ],
   "dependencies": {
-    "@raypatterson/passthough-loader": "github:raypatterson/passthough-loader",
+    "@raypatterson/passthough-loader": "raypatterson/passthough-loader",
+    "@raypatterson/sws-config": "raypatterson/sws-config",
     "clean-webpack-plugin": "^0.1.9",
     "commander": "^2.9.0",
     "css-loader": "^0.23.1",
-    "deep-freeze": "0.0.1",
-    "ejs": "^2.5.1",
     "ejs-html-loader": "^2.0.2",
-    "execa": "^0.4.0",
     "extract-loader": "0.0.2",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
@@ -48,7 +47,6 @@
     "node-sass": "^3.7.0",
     "open-browser-webpack-plugin": "0.0.2",
     "pkg-up": "^1.0.0",
-    "preprocessor-loader": "^1.0.5",
     "req-all": "^0.1.0",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
@@ -103,7 +101,6 @@
   "xo": {
     "envs": [
       "node",
-      "browser",
       "commonjs"
     ],
     "esnext": true,

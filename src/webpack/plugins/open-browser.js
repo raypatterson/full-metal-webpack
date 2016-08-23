@@ -2,7 +2,7 @@
 
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
-const cfg = require('../../config');
+const cfg = require('@raypatterson/sws-config');
 
 module.exports = webpackConfig => {
 
