@@ -1,20 +1,14 @@
 'use strict';
 
 const path = require('path');
-const pkgup = require('pkg-up');
 
 const cfg = require('@raypatterson/sws-config');
 
-module.exports = function getDevFiles(webpackConfig) {
+const modulesPath = require('./get-modules-path');
 
-	const packageRoot = path.dirname(pkgup.sync(__dirname));
-	const entryContext = webpackConfig.context;
-	const relativePath = path.relative(entryContext, packageRoot);
-	const nodeModules = path.join(relativePath, cfg.file.node);
+const nodeModules = path.relative(cfg.file.absolute.source, modulesPath.node);
 
-	return [
-		path.join(nodeModules, 'webpack/hot/dev-server'),
-		`${path.join(nodeModules, 'webpack-dev-server/client')}?${cfg.server.url}/`
-	];
-
-};
+module.exports = [
+	path.join(nodeModules, 'webpack/hot/dev-server'),
+	`${path.join(nodeModules, 'webpack-dev-server/client')}?${cfg.server.url}/`
+];

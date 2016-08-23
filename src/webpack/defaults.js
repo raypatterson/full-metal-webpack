@@ -1,11 +1,11 @@
 'use strict';
 
 const path = require('path');
-const pkgup = require('pkg-up');
-const fs = require('fs-jetpack');
 const Joi = require('webpack-validator').Joi;
 
 const cfg = require('@raypatterson/sws-config');
+
+const modulesPath = require('./utils/get-modules-path');
 
 /**
  *  Config
@@ -13,21 +13,7 @@ const cfg = require('@raypatterson/sws-config');
 
 const defaultFilename = path.join(cfg.wp.outputName, cfg.file.bundle.js);
 
-const projectRoot = path.dirname(pkgup.sync(process.cwd()));
-const packageRoot = path.dirname(pkgup.sync(__dirname));
-
-const resolveLoaderModulesDir = path.join(packageRoot, cfg.file.node);
-/**
- * TODO: Make sure this check works with NPM 2.x
- */
-const isPackageLinked = (fs.exists(resolveLoaderModulesDir) === 'dir');
-
-console.log('projectRoot', projectRoot);
-console.log('packageRoot', packageRoot);
-console.log('resolveLoaderModulesDir', resolveLoaderModulesDir);
-console.log('isPackageLinked', isPackageLinked);
-
-const resolveLoaderRoot = isPackageLinked ? packageRoot : projectRoot;
+const resolveLoaderRoot = modulesPath.root;
 
 const modulesDirectories = [
 	cfg.file.node,
@@ -56,10 +42,6 @@ const webpackConfig = {
 	resolveLoader: {
 		root: resolveLoaderRoot,
 		modulesDirectories
-		// ,
-		// fallback: [
-		// 	path.join(root, cfg.file.node)
-		// ]
 	},
 	plugins: [],
 	module: {
