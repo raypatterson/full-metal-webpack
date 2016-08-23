@@ -2,6 +2,7 @@
 
 const path = require('path');
 const combineLoaders = require('webpack-combine-loaders');
+const Joi = require('webpack-validator').Joi;
 
 const cfg = require('@raypatterson/sws-config');
 
@@ -9,6 +10,10 @@ const getEntryData = require('./get-entry-data');
 
 module.exports = function addTemplateLoader(entryName, webpackConfig) {
 
+	// Allow config to pass validation
+	webpackConfig.webpackSchemaExtension.passthough = Joi.any();
+
+	// Add config
 	webpackConfig.passthough = {
 		callback: function renderTemplate(source, loader) {
 

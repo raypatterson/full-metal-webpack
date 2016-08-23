@@ -2,6 +2,7 @@
 
 const path = require('path');
 const pkgup = require('pkg-up');
+const Joi = require('webpack-validator').Joi;
 
 const cfg = require('@raypatterson/sws-config');
 
@@ -47,7 +48,11 @@ const webpackConfig = {
 		loaders: [],
 		postLoaders: []
 	},
-	devtool: '#inline-source-map'
+	devtool: '#inline-source-map',
+	// Allow validation for custom loader configs
+	webpackSchemaExtension: {
+		webpackSchemaExtension: Joi.any()
+	}
 };
 
 module.exports = webpackConfig;
