@@ -3,7 +3,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const cfg = require('../../../cfg');
+const cfg = require('../../config');
 
 module.exports = webpackConfig => {
 

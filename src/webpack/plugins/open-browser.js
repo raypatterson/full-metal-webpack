@@ -2,7 +2,7 @@
 
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
-const cfg = require('../../../cfg');
+const cfg = require('../../config');
 
 module.exports = webpackConfig => {
 

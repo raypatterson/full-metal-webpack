@@ -1,6 +1,6 @@
 'use strict';
 
-const cfg = require('../../../cfg');
+const cfg = require('../../config');
 
 module.exports = webpackConfig => {
 

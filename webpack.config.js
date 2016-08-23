@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = require('./src/webpack/config/singleton');
+module.exports = require('./src/webpack/singleton');

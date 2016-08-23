@@ -5,7 +5,7 @@ const webpack = require('webpack');
 
 const webpackConfig = require('../webpack.config');
 
-const cfg = require('../cfg');
+const cfg = require('./config');
 
 module.exports = function fmw(options) {
 

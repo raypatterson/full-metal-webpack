@@ -2,7 +2,7 @@
 
 const WebpackVisualizerPlugin = require('webpack-visualizer-plugin');
 
-const cfg = require('../../../cfg');
+const cfg = require('../../config');
 
 module.exports = webpackConfig => {
 

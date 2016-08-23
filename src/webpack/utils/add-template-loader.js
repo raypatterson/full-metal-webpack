@@ -3,7 +3,7 @@
 const path = require('path');
 const combineLoaders = require('webpack-combine-loaders');
 
-const cfg = require('../../../../cfg');
+const cfg = require('../../config');
 
 const getEntryData = require('./get-entry-data');
 

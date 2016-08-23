@@ -3,7 +3,7 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const cfg = require('../../../cfg');
+const cfg = require('../../config');
 
 module.exports = webpackConfig => {
 

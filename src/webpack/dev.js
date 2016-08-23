@@ -5,7 +5,7 @@ const glob = require('globby');
 const reqAll = require('req-all');
 const webpack = require('webpack');
 
-const cfg = require('../../../cfg');
+const cfg = require('../config');
 
 const addEntryPoint = require('./utils/add-entry-point');
 
@@ -27,7 +27,7 @@ webpackConfig.entry = glob.sync(
  * Import loader presets
  * TODO: Import project loaders
  */
-_.each(reqAll('../loaders'), loader => loader(webpackConfig));
+_.each(reqAll('./loaders'), loader => loader(webpackConfig));
 
 /**
  * Import plugin presets (order matters)
@@ -38,12 +38,12 @@ webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
 webpackConfig.plugins.push(new webpack.NoErrorsPlugin());
 
 [
-	'../plugins/clean-dest',
-	'../plugins/debug-flag',
-	'../plugins/common-chunks',
-	'../plugins/split-path',
-	'../plugins/stats-graph',
-	'../plugins/open-browser'
+	'./plugins/clean-dest',
+	'./plugins/debug-flag',
+	'./plugins/common-chunks',
+	'./plugins/split-path',
+	'./plugins/stats-graph',
+	'./plugins/open-browser'
 
 ].forEach(pluginPath => {
 
