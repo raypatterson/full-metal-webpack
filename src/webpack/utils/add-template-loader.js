@@ -63,7 +63,7 @@ module.exports = function addTemplateLoader(entryName, webpackConfig) {
 				root: cfg.file.source
 			}
 		}, {
-			loader: '@raypatterson/passthough-loader'
+			loader: 'passthough'
 		}, {
 			loader: entryTmpl
 		}
