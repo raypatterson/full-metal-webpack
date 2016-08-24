@@ -30,7 +30,6 @@
     }
   ],
   "dependencies": {
-    "@raypatterson/passthough-loader": "raypatterson/passthough-loader",
     "@raypatterson/sws-config": "raypatterson/sws-config",
     "autoprefixer": "^6.4.0",
     "clean-webpack-plugin": "^0.1.9",
@@ -46,6 +45,7 @@
     "lodash": "^4.12.0",
     "node-sass": "^3.7.0",
     "open-browser-webpack-plugin": "0.0.2",
+    "passthough-loader": "raypatterson/passthough-loader",
     "pkg-up": "^1.0.0",
     "postcss-loader": "^0.10.1",
     "req-all": "^0.1.0",
