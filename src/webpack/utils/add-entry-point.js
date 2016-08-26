@@ -10,10 +10,12 @@ const addTemplateLoader = require('./add-template-loader');
 module.exports = function addEntryPoint(entryObject, entryPath, webpackConfig) {
 
 	const entryName = path.dirname(entryPath);
+	const entryScript = path.join(cfg.file.pages, entryPath);
+	const entryTemplate = addTemplateLoader(entryName, webpackConfig);
 
 	entryObject[entryName] = [
-		path.join(cfg.file.pages, entryPath),
-		addTemplateLoader(entryName, webpackConfig)
+		entryScript,
+		entryTemplate
 	].concat(devFiles);
 
 	return entryObject;

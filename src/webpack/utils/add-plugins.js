@@ -10,6 +10,11 @@ module.exports = function addPlugins(webpackConfig) {
 	 */
 	webpackConfig.plugins.push(new webpack.optimize.OccurrenceOrderPlugin(true));
 	webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
+
+	/**
+	 * TODO: Not sure how to add this plugin and use ESLint warning
+	 * https://github.com/MoOx/eslint-loader#noerrorsplugin
+	 */
 	webpackConfig.plugins.push(new webpack.NoErrorsPlugin());
 
 	[

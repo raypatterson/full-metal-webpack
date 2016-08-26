@@ -41,7 +41,11 @@ const webpackConfig = {
 	// Resolve Package loaders
 	resolveLoader: {
 		root: resolveLoaderRoot,
-		modulesDirectories
+		modulesDirectories,
+		/**
+		 * TODO: Figure out why loader won't resolve without a fallback.
+		 */
+		fallback: path.join(resolveLoaderRoot, cfg.file.node)
 	},
 	plugins: [],
 	module: {
