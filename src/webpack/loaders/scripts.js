@@ -14,12 +14,16 @@ module.exports = webpackConfig => {
 	// Allow ESLint config to pass validation
 	webpackConfig.webpackSchemaExtension.eslint = Joi.any();
 
+	console.log('include', cfg.file.absolute.source);
+
 	// Add ESLint config
 	webpackConfig.eslint = {
 		emitWarning: true,
 		emitError: true,
 		failOnWarning: false,
 		failOnError: true,
+		fix: true,
+		cache: true,
 		configFile: path.join(packageRoot, 'cfg/_eslintrc.js')
 	};
 
