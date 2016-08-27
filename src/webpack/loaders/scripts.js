@@ -1,12 +1,13 @@
 'use strict';
 
 const path = require('path');
+const pkgup = require('pkg-up');
 
 const Joi = require('webpack-validator').Joi;
 
 const cfg = require('@raypatterson/sws-config');
 
-const modulesPath = require('../utils/get-modules-path.js');
+const packageRoot = path.dirname(pkgup.sync(__dirname));
 
 module.exports = webpackConfig => {
 
@@ -19,7 +20,7 @@ module.exports = webpackConfig => {
 		emitError: true,
 		failOnWarning: false,
 		failOnError: true,
-		configFile: path.join(modulesPath.root, 'cfg/_eslintrc.js')
+		configFile: path.join(packageRoot, 'cfg/_eslintrc.js')
 	};
 
 	webpackConfig.module.preLoaders.push({
