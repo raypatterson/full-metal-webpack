@@ -20,6 +20,7 @@ module.exports = function addPlugins(webpackConfig) {
 	[
 		'../plugins/clean-dest',
 		'../plugins/debug-flag',
+		'../plugins/lint-styles',
 		'../plugins/common-chunks',
 		'../plugins/split-path',
 		'../plugins/stats-graph',

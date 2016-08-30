@@ -24,7 +24,7 @@ module.exports = webpackConfig => {
 		failOnError: true,
 		fix: true,
 		cache: true,
-		configFile: path.join(packageRoot, 'cfg/_eslintrc.js')
+		configFile: path.join(packageRoot, 'cfg/eslint.config.js')
 	};
 
 	webpackConfig.module.preLoaders.push({
