@@ -1,6 +1,7 @@
 'use strict';
 
 const webpack = require('webpack');
+const ForceCaseSensitivityPlugin = require('force-case-sensitivity-webpack-plugin');
 
 module.exports = function addPlugins(webpackConfig) {
 
@@ -8,6 +9,7 @@ module.exports = function addPlugins(webpackConfig) {
 	 * Import plugin presets (order matters)
 	 * TODO: Import project plugins
 	 */
+	webpackConfig.plugins.push(new ForceCaseSensitivityPlugin());
 	webpackConfig.plugins.push(new webpack.optimize.OccurrenceOrderPlugin(true));
 	webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
 
