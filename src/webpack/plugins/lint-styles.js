@@ -1,15 +1,13 @@
 'use strict';
 
-const path = require('path');
-const pkgup = require('pkg-up');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
-const packageRoot = path.dirname(pkgup.sync(__dirname));
+const linterConfig = require('../utils/get-config-file')('stylelint');
 
 module.exports = webpackConfig => {
 
 	webpackConfig.plugins.push(new StyleLintPlugin({
-		configFile: path.join(packageRoot, 'cfg/stylelint.config.js'),
+		configFile: linterConfig,
 		files: '**/*.s?(a|c)ss',
 		failOnError: false
 	}));
