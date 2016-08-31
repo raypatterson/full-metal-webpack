@@ -31,6 +31,7 @@ const webpackConfig = {
 		publicPath: cfg.wp.publicPath
 	},
 	resolve: {
+		alias: {},
 		root: cfg.file.cwd,
 		extensions: [
 			'',

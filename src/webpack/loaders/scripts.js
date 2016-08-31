@@ -4,7 +4,7 @@ const Joi = require('webpack-validator').Joi;
 
 const cfg = require('@raypatterson/sws-config');
 
-const linterConfig = require('../utils/get-config-file')('eslint');
+const resourceConfig = require('../utils/get-resource-config')('eslint');
 
 module.exports = webpackConfig => {
 
@@ -19,7 +19,7 @@ module.exports = webpackConfig => {
 		failOnError: true,
 		fix: true,
 		cache: true,
-		configFile: linterConfig
+		configFile: resourceConfig
 	};
 
 	webpackConfig.module.preLoaders.push({

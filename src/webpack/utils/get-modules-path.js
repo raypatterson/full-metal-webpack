@@ -1,16 +1,19 @@
 'use strict';
 
+/**
+ * This util is necessary to develop with NPM link.
+ */
+
 const path = require('path');
-const pkgup = require('pkg-up');
 const fs = require('fs-jetpack');
 
-const NODE_MODUELS = 'node_modules';
+const NODE_MODULES = 'node_modules';
 
-const projectRoot = path.dirname(pkgup.sync(process.cwd()));
-const projectModules = path.join(projectRoot, NODE_MODUELS);
+const projectRoot = require('./get-project-root');
+const packageRoot = require('./get-package-root');
 
-const packageRoot = path.dirname(pkgup.sync(__dirname));
-const packageModules = path.join(packageRoot, NODE_MODUELS);
+const projectModules = path.join(projectRoot, NODE_MODULES);
+const packageModules = path.join(packageRoot, NODE_MODULES);
 
 module.exports = (fs.exists(packageModules) === 'dir') ? {
 	root: packageRoot,

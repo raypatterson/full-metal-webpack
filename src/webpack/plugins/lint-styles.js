@@ -2,12 +2,12 @@
 
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
-const linterConfig = require('../utils/get-config-file')('stylelint');
+const resourceConfig = require('../utils/get-resource-config')('stylelint');
 
 module.exports = webpackConfig => {
 
 	webpackConfig.plugins.push(new StyleLintPlugin({
-		configFile: linterConfig,
+		configFile: resourceConfig,
 		files: '**/*.s?(a|c)ss',
 		failOnError: false
 	}));
