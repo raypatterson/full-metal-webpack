@@ -7,17 +7,43 @@ const cfg = require('@raypatterson/sws-config');
 
 const webpackConfig = require('../webpack.config');
 
+const compiler = webpack(webpackConfig, (err, stats) => {
+
+	console.log('WEBPAAAACK');
+
+	if (err) {
+
+		return console.error(err);
+
+	}
+
+	const jsonStats = stats.toJson();
+
+	if (jsonStats.errors.length > 0) {
+
+		return console.error(jsonStats.errors);
+
+	}
+
+	if (jsonStats.warnings.length > 0) {
+
+		console.warn(jsonStats.warnings);
+
+	}
+
+	console.info('Build Successful');
+
+});
+
 module.exports = function fmw(options) {
 
 	if (options.program.production) {
 
-		console.log('Build');
+		console.log('Building Static Files');
 
 	} else {
 
 		console.log('Starting Dev Server');
-
-		const compiler = webpack(webpackConfig);
 
 		const server = new WebpackDevServer(compiler, {
 
