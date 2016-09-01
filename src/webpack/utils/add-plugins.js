@@ -25,6 +25,13 @@ module.exports = function addPlugins(webpackConfig) {
 		'../plugins/lint-styles',
 		'../plugins/common-chunks',
 		'../plugins/split-path',
+		/**
+		 * TODO: Production Only: Optimize CSS
+		 */
+		'../plugins/optimize-css',
+		/**
+		 * TODO: Production Only: Generate stats
+		 */
 		'../plugins/stats-graph',
 		'../plugins/open-browser'
 
