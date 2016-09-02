@@ -8,23 +8,23 @@ const Joi = require('webpack-validator').Joi;
 
 const cfg = require('@raypatterson/sws-config');
 
-const cssLoader = [
-	{
-		loader: 'css',
-		query: {
-			sourceMap: true
-		}
-	}, {
-		/**
-		 * Need to use `-loader` suffix or webpack gets confused
-		 * https://github.com/postcss/postcss-loader/issues/74#issuecomment-225773438
-		 */
-		loader: 'postcss-loader'
-	}
-];
+const getCachedLoader = require('../utils/get-cached-loader');
 
-const sassLoader = cssLoader.concat([{
-	loader: 'sass'
+const cssLoaders = getCachedLoader('css', [{
+	loader: 'css-loader',
+	query: {
+		sourceMap: true
+	}
+}, {
+	/**
+	 * Need to use `-loader` suffix or webpack gets confused
+	 * https://github.com/postcss/postcss-loader/issues/74#issuecomment-225773438
+	 */
+	loader: 'postcss-loader'
+}]);
+
+const sassLoader = cssLoaders.concat([{
+	loader: 'sass-loader'
 }]);
 
 module.exports = webpackConfig => {
@@ -46,7 +46,7 @@ module.exports = webpackConfig => {
 	webpackConfig.module.loaders.push({
 		test: /\.scss$/i,
 		loader: ExtractTextPlugin.extract(
-			'style',
+			'style-loader',
 			combineLoaders(sassLoader), {
 				publicPath: cfg.wp.publicPath
 			})
@@ -55,8 +55,8 @@ module.exports = webpackConfig => {
 	webpackConfig.module.loaders.push({
 		test: /\.css$/i,
 		loader: ExtractTextPlugin.extract(
-			'style',
-			combineLoaders(cssLoader)
+			'style-loader',
+			combineLoaders(cssLoaders)
 		)
 	});
 

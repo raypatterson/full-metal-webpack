@@ -5,6 +5,10 @@ const webpack = require('webpack');
 
 const cfg = require('@raypatterson/sws-config');
 
+/**
+ * TODO: Disable `common` JS if `webpackConfig.entry.length === 1`.
+ */
+
 module.exports = webpackConfig => {
 
 	webpackConfig.plugins.push(new webpack.optimize.CommonsChunkPlugin({

@@ -32,6 +32,7 @@
   "dependencies": {
     "@raypatterson/sws-config": "raypatterson/sws-config",
     "autoprefixer": "^6.4.0",
+    "cached-loader": "^0.1.1",
     "clean-webpack-plugin": "^0.1.9",
     "commander": "^2.9.0",
     "css-loader": "^0.24.0",
