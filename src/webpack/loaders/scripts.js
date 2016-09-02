@@ -1,10 +1,16 @@
 'use strict';
 
 const Joi = require('webpack-validator').Joi;
+const combineLoaders = require('webpack-combine-loaders');
 
 const cfg = require('@raypatterson/sws-config');
 
 const resourceConfig = require('../utils/get-resource-config')('eslint');
+const getCachedLoader = require('../utils/get-cached-loader');
+
+const scriptLoaders = combineLoaders(getCachedLoader('script', [{
+	loader: 'eslint-loader'
+}]));
 
 module.exports = webpackConfig => {
 
@@ -24,7 +30,7 @@ module.exports = webpackConfig => {
 
 	webpackConfig.module.preLoaders.push({
 		test: /\.js$/i,
-		loader: 'eslint-loader',
+		loader: scriptLoaders,
 		exclude: [
 			new RegExp(cfg.file.node)
 		]

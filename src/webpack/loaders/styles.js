@@ -10,7 +10,7 @@ const cfg = require('@raypatterson/sws-config');
 
 const getCachedLoader = require('../utils/get-cached-loader');
 
-const cssLoaders = getCachedLoader('css', [{
+const cssLoaders = getCachedLoader('style', [{
 	loader: 'css-loader',
 	query: {
 		sourceMap: true

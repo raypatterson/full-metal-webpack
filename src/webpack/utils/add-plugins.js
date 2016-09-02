@@ -86,6 +86,7 @@ module.exports = function addPlugins(webpackConfig) {
 	[
 		// Skip in production
 		'hot-module:no-production',
+		'if-changed:no-production',
 		'open-browser:no-production',
 		// Load in production
 		'clean-dest:production',
