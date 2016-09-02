@@ -13,7 +13,7 @@ const getCachedLoader = require('../utils/get-cached-loader');
 const cssLoaders = getCachedLoader('style', [{
 	loader: 'css-loader',
 	query: {
-		sourceMap: true
+		sourceMap: cfg.debug
 	}
 }, {
 	/**

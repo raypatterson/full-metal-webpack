@@ -28,7 +28,8 @@ const webpackConfig = {
 		path: cfg.file.absolute.dest,
 		filename: defaultFilename,
 		chunkFilename: defaultFilename,
-		publicPath: cfg.wp.publicPath
+		publicPath: cfg.wp.publicPath,
+		pathinfo: cfg.debug
 	},
 	resolve: {
 		alias: {},
@@ -54,7 +55,9 @@ const webpackConfig = {
 		loaders: [],
 		postLoaders: []
 	},
-	devtool: '#inline-source-map',
+	cache: cfg.production,
+	debug: cfg.debug,
+	devtool: cfg.debug ? 'cheap-module-inline-source-map' : false,
 	// Allow validation for custom loader configs
 	webpackSchemaExtension: {
 		webpackSchemaExtension: Joi.any()

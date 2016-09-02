@@ -1,6 +1,6 @@
 # TODO
 
-[] Make webpack default, dev, prod config
+[] Figure out why incremental build takes forever
 [] Enable es6 modules
 [] Upgrade to webpack 2
 [] Make entire library async

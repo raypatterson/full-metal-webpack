@@ -8,6 +8,13 @@ module.exports = webpackConfig => {
 	webpackConfig.plugins.push(new webpack.optimize.OccurrenceOrderPlugin(true));
 	webpackConfig.plugins.push(new webpack.optimize.DedupePlugin());
 	webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin());
-	webpackConfig.plugins.push(new OptimizeCssAssetsPlugin());
+
+	webpackConfig.plugins.push(new OptimizeCssAssetsPlugin({
+		cssProcessorOptions: {
+			discardComments: {
+				removeAll: true
+			}
+		}
+	}));
 
 };
