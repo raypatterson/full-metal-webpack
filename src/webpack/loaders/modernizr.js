@@ -4,8 +4,6 @@ const path = require('path');
 const fs = require('fs-jetpack');
 const combineLoaders = require('webpack-combine-loaders');
 
-const cfg = require('@raypatterson/sws-config');
-
 const projectRoot = require('../utils/get-project-root');
 const getCachedLoader = require('../utils/get-cached-loader');
 
