@@ -1,119 +1,75 @@
 'use strict';
 
 const path = require('path');
-const webpack = require('webpack');
-const ForceCaseSensitivityPlugin = require('force-case-sensitivity-webpack-plugin');
 
 const cfg = require('@raypatterson/sws-config');
 
+/**
+ * TODO: Import project plugins
+ * TODO: Not sure how to use `NoErrorsPlugin` plugin with ESLint warnings. https://github.com/MoOx/eslint-loader#noerrorsplugin
+ */
+
 module.exports = function addPlugins(webpackConfig) {
 
-	/**
-	 * Import plugin presets (order matters)
-	 * TODO: Import project plugins
-	 */
+	const reportStatus = (name, mode, flag, status) => {
 
-	webpackConfig.plugins.push(new ForceCaseSensitivityPlugin());
+		console.info(`${status} '${name}' plugin while ${mode} mode is ${flag || flag === undefined ? 'active' : 'inactive'}.`);
 
-	/**
-	 * TODO: Not sure how to add this plugin and use ESLint warning
-	 * https://github.com/MoOx/eslint-loader#noerrorsplugin
-	 */
-	webpackConfig.plugins.push(new webpack.NoErrorsPlugin());
+	};
 
-	if (cfg.production === true) {
+	const reportWarn = (name, mode) => {
 
-		webpackConfig.plugins.push(new webpack.optimize.OccurrenceOrderPlugin(true));
-		webpackConfig.plugins.push(new webpack.optimize.DedupePlugin());
-		webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin());
+		console.warn(`No ${mode} mode for '${name}' plugin.`);
 
-	} else {
+	};
 
-		webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
+	const filterPlugin = (list, key) => {
 
-	}
+		const keyDelimiter = ':';
+		const omitDelimiter = '-';
+		const omitPrefix = 'no';
+		const defaultMode = 'default';
 
-	const filterPlugin = (list, id) => {
+		const name = key.split(keyDelimiter)[0];
+
+		let mode = key.split(keyDelimiter)[1] || defaultMode;
+
+		const omit = mode.indexOf(omitPrefix) === 0;
+
+		if (omit) {
+
+			mode = mode.split(omitDelimiter)[1];
+
+		}
+
+		const flag = cfg[mode];
 
 		let isLoading = false;
 
-		const name = id.split(':')[0];
-		const mode = id.split(':')[1];
+		if (flag === true || mode === defaultMode) {
 
-		const reportLoad = (name, mode) => {
+			isLoading = !omit;
 
-			console.info(`Load '${name}' plugin in '${mode}' mode.`);
+		} else if (flag === false) {
 
-		};
-
-		const reportSkip = (name, mode) => {
-
-			console.info(`Skip '${name}' plugin in '${mode}' mode.`);
-
-		};
-
-		const reportWarn = (name, mode) => {
-
-			console.warn(`No '${mode}' mode for '${name}' plugin.`);
-
-		};
-
-		/**
-		 * TODO: This plugin filtering logic is terrible.
-		 */
-		if (mode) {
-
-			const cfgMode = cfg[mode];
-
-			if (cfgMode === true) {
-
-				reportLoad(name, mode);
-
-				isLoading = true;
-
-			} else if (mode.indexOf('no') === 0) {
-
-				const noMode = mode.split('-')[1];
-
-				if (cfg[noMode]) {
-
-					reportSkip(name, mode);
-
-				} else {
-
-					reportWarn(name, noMode);
-
-				}
-
-			} else if (cfgMode === false) {
-
-				if (mode.indexOf('no') === 0) {
-
-					reportLoad(name, mode);
-
-				} else {
-
-					reportSkip(name, `no-${mode}`);
-
-				}
-
-			} else if (cfgMode === undefined) {
-
-				reportWarn(name, mode);
-
-			}
+			isLoading = omit;
 
 		} else {
 
-			reportLoad(name, 'default');
-
-			isLoading = true;
+			// Not in default mode, flag not found
+			reportWarn(name, mode);
 
 		}
 
 		if (isLoading) {
 
+			reportStatus(name, mode, flag, 'Loading');
+
 			list.push(name);
+
+		} else {
+
+			reportStatus(name, mode, flag, 'Skipping');
 
 		}
 
@@ -128,14 +84,22 @@ module.exports = function addPlugins(webpackConfig) {
 	};
 
 	[
+		// Skip in production
+		'hot-module:no-production',
+		'open-browser:no-production',
+		// Load in production
 		'clean-dest:production',
-		'debug-flag:debug',
-		'lint-styles',
-		'common-chunks',
-		'split-path',
-		'optimize-css:production',
+		'optimize-output:production',
 		'stats-graph:production',
-		'open-browser:no-production'
+		// Load in debug
+		'debug-flag:debug',
+		// Load always
+		'use-strict',
+		/**
+		 * TODO: Make code splitting optional?
+		 */
+		'common-chunks',
+		'split-path'
 
 	].reduce(filterPlugin, [])
 		.forEach(loadPlugin);
