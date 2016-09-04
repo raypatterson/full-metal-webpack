@@ -28,6 +28,7 @@ const imageLoaders = combineLoaders([{
 
 module.exports = webpackConfig => {
 
+	// Add Images Loader
 	webpackConfig.module.loaders.push({
 		test: /\.(jpe?g|png|gif|svg)$/i,
 		loader: imageLoaders

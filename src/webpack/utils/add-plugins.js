@@ -96,6 +96,7 @@ module.exports = function addPlugins(webpackConfig) {
 		'debug-flag:debug',
 		// Load always
 		'use-strict',
+		'lint-styles',
 		/**
 		 * TODO: Make code splitting optional?
 		 */

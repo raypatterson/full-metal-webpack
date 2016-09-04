@@ -55,7 +55,7 @@ const webpackConfig = {
 		loaders: [],
 		postLoaders: []
 	},
-	cache: cfg.production,
+	cache: true, // !cfg.production,
 	debug: cfg.debug,
 	devtool: cfg.debug ? 'cheap-module-inline-source-map' : false,
 	// Allow validation for custom loader configs
