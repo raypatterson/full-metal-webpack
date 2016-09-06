@@ -1,7 +1,6 @@
 'use strict';
 
 const path = require('path');
-const HappyPack = require('happypack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const combineLoaders = require('webpack-combine-loaders');
 const autoprefixer = require('autoprefixer');
@@ -9,25 +8,16 @@ const Joi = require('webpack-validator').Joi;
 
 const cfg = require('@raypatterson/sws-config');
 
-const getCachedLoader = require('../utils/get-cached-loader');
-
-const SASS_LOADER_ID = 'happy-sass';
-
-const cssLoaders = getCachedLoader('style', [{
-	loader: 'css-loader'
-}, {
-	/**
-	 * NOTE: Need to use `-loader` suffix or webpack gets confused
-	 * https://github.com/postcss/postcss-loader/issues/74#issuecomment-225773438
-	 */
-	loader: 'postcss-loader'
-}]);
-
-const sassLoaders = cssLoaders.concat([{
-	loader: `happypack/loader?id=${SASS_LOADER_ID}`
-}]);
+const addHappyPackLoader = require('../utils/add-happy-pack-loader');
+const addCachedLoader = require('../utils/add-cached-loader');
 
 module.exports = webpackConfig => {
+
+	// PostCSS Loader
+
+	/**
+	 * NOTE: PoseCSS loader doesn't work with HappyPack
+	 */
 
 	// Allow PostCSS config to pass validation
 	webpackConfig.webpackSchemaExtension.postcss = Joi.any();
@@ -40,6 +30,24 @@ module.exports = webpackConfig => {
 		];
 
 	};
+
+	const postcssLoader = {
+		/**
+		 * NOTE: Need to use `-loader` suffix or webpack gets confused
+		 * https://github.com/postcss/postcss-loader/issues/74#issuecomment-225773438
+		 */
+		loader: 'postcss-loader'
+	};
+
+	// CSS Loader
+
+	const cssLoader = {
+		loader: 'css-loader'
+	};
+
+	// SASS Loaders
+
+	const SASS_LOADER_ID = 'sass';
 
 	// Allow SASS config to pass validation
 	webpackConfig.webpackSchemaExtension.sassLoader = Joi.any();
@@ -55,14 +63,18 @@ module.exports = webpackConfig => {
 		outputStyle: 'expanded'
 	};
 
-	// Add SASS HappyPack
-	webpackConfig.plugins.push(new HappyPack({
-		id: SASS_LOADER_ID,
-		threads: 4,
-		loaders: [
-			'sass-loader'
-		]
-	}));
+	let sassLoaders = [{
+		loader: 'sass-loader'
+	}];
+
+	sassLoaders = addHappyPackLoader(SASS_LOADER_ID, sassLoaders, webpackConfig);
+
+	sassLoaders = [
+		cssLoader,
+		postcssLoader
+	].concat(sassLoaders);
+
+	sassLoaders = addCachedLoader(SASS_LOADER_ID, sassLoaders);
 
 	// Add SASS Loader
 	webpackConfig.module.loaders.push({
@@ -75,6 +87,18 @@ module.exports = webpackConfig => {
 	});
 
 	// Add CSS Loader
+
+	const CSS_LOADER_ID = 'css';
+
+	let cssLoaders = [
+		cssLoader,
+		postcssLoader
+	];
+
+	cssLoaders = addHappyPackLoader(CSS_LOADER_ID, cssLoaders, webpackConfig);
+
+	cssLoaders = addCachedLoader(CSS_LOADER_ID, cssLoaders);
+
 	webpackConfig.module.loaders.push({
 		test: /\.css$/i,
 		loader: ExtractTextPlugin.extract(

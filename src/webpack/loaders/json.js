@@ -2,39 +2,28 @@
 
 'use strict';
 
-const HappyPack = require('happypack');
 const combineLoaders = require('webpack-combine-loaders');
 
-const cfg = require('@raypatterson/sws-config');
-
-const getCachedLoader = require('../utils/get-cached-loader');
-
-const LOADER_ID = 'happy-json';
-
-const jsonHappyPack = new HappyPack({
-	id: LOADER_ID,
-	enabled: cfg.production === false,
-	threads: 4,
-	loaders: [
-		'json-loader'
-	]
-});
-
-const jsonLoader = {
-	test: /\.json$/i,
-	loader: combineLoaders([{
-		loader: getCachedLoader('json', [])
-	}, {
-		loader: 'happypack/loader',
-		query: {
-			id: LOADER_ID
-		}
-	}])
-};
+const addHappyPackLoader = require('../utils/add-happy-pack-loader');
+const addCachedLoader = require('../utils/add-cached-loader');
 
 module.exports = webpackConfig => {
 
-	webpackConfig.plugins.push(jsonHappyPack);
+	const LOADER_ID = 'json';
+
+	let jsonLoaders = [{
+		loader: 'json-loader'
+	}];
+
+	jsonLoaders = addHappyPackLoader(LOADER_ID, jsonLoaders, webpackConfig);
+
+	jsonLoaders = addCachedLoader(LOADER_ID, jsonLoaders);
+
+	const jsonLoader = {
+		test: /\.json$/i,
+		loader: combineLoaders(jsonLoaders)
+	};
+
 	webpackConfig.module.loaders.push(jsonLoader);
 
 };

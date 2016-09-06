@@ -7,7 +7,7 @@ const cfg = require('@raypatterson/sws-config');
 module.exports = webpackConfig => {
 
 	webpackConfig.plugins.push(new OnlyIfChangedPlugin({
-		cacheDirectory: cfg.file.absolute.dest,
+		cacheDirectory: cfg.file.absolute.cached,
 		cacheIdentifier: cfg
 	}));
 
