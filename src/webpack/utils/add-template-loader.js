@@ -6,6 +6,9 @@ const Joi = require('webpack-validator').Joi;
 
 const cfg = require('@raypatterson/sws-config');
 
+const addHappyPackLoader = require('../utils/add-happy-pack-loader');
+const addCachedLoader = require('../utils/add-cached-loader');
+
 const getEntryData = require('./get-entry-data');
 
 module.exports = function addTemplateLoader(entryName, webpackConfig) {
@@ -46,27 +49,42 @@ module.exports = function addTemplateLoader(entryName, webpackConfig) {
 	const entryHtml = path.join(entryName, cfg.file.bundle.html);
 	const entryTmpl = path.join(cfg.file.pages, entryName, cfg.file.bundle.tmpl);
 
-	return combineLoaders([
-		{
-			loader: 'file',
-			query: {
-				name: entryHtml
-			}
-		}, {
-			loader: 'extract'
-		}, {
-			loader: 'html',
-			query: {
-				attrs: [
-					'img:src'
-				],
-				root: cfg.file.source
-			}
-		}, {
-			loader: 'passthough'
-		}, {
-			loader: entryTmpl
+	// Add parsing loader
+	let templateLoaders = [{
+		loader: 'html-loader',
+		query: {
+			attrs: [
+				'img:src'
+			],
+			root: cfg.file.absolute.source
 		}
-	]);
+	}];
+
+	const LOADER_ID = 'templates';
+
+	// HappyPack loaders
+	templateLoaders = addHappyPackLoader(LOADER_ID, templateLoaders, webpackConfig);
+
+	// Add compile loader & entry point that do not work with HappyPack loader
+	templateLoaders = templateLoaders.concat([{
+		loader: 'passthough-loader'
+	}, {
+		loader: entryTmpl
+	}]);
+
+	// Cache loaders
+	templateLoaders = addCachedLoader(LOADER_ID, templateLoaders);
+
+	// Add output loaders that do not work with Cached loader
+	templateLoaders = [{
+		loader: 'file-loader',
+		query: {
+			name: entryHtml
+		}
+	}, {
+		loader: 'extract-loader'
+	}].concat(templateLoaders);
+
+	return combineLoaders(templateLoaders);
 
 };

@@ -1,7 +1,12 @@
 'use strict';
 
-const HappyPack = require('happypack');
 const combineLoaders = require('webpack-combine-loaders');
+const HappyPack = require('happypack');
+
+// eslint-disable-next-line babel/new-cap
+const happyThreadPool = HappyPack.ThreadPool({
+	size: 7
+});
 
 const cfg = require('@raypatterson/sws-config');
 
@@ -14,7 +19,7 @@ module.exports = (loaderId, loaders, webpackConfig) => {
 		webpackConfig.plugins.push(new HappyPack({
 			tempDir: cfg.file.absolute.happypack,
 			id: happyPackId,
-			threads: 4,
+			threadPool: happyThreadPool,
 			loaders: [
 				combineLoaders(loaders)
 			]
