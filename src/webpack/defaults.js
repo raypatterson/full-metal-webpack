@@ -17,8 +17,9 @@ const resolveLoaderRoot = modulesPath.root;
 
 const modulesDirectories = [
 	cfg.file.node,
-	cfg.file.local,
-	cfg.file.source
+	cfg.file.local
+	// ,
+	// cfg.file.source
 ];
 
 const webpackConfig = {
@@ -33,7 +34,13 @@ const webpackConfig = {
 	},
 	resolve: {
 		alias: {},
-		root: cfg.file.cwd,
+		root: [
+			/**
+			 * NOTE: Helps to point webpack directly to the source.
+			 * https://github.com/webpack/webpack/issues/472#issuecomment-55706013
+			 */
+			cfg.file.absolute.source
+		],
 		extensions: [
 			'',
 			'.js'
