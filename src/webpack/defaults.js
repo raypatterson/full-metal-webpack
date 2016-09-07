@@ -18,8 +18,6 @@ const resolveLoaderRoot = modulesPath.root;
 const modulesDirectories = [
 	cfg.file.node,
 	cfg.file.local
-	// ,
-	// cfg.file.source
 ];
 
 const webpackConfig = {
@@ -62,9 +60,9 @@ const webpackConfig = {
 		loaders: [],
 		postLoaders: []
 	},
-	cache: true, // !cfg.production,
-	debug: cfg.debug,
-	devtool: cfg.debug ? 'cheap-module-inline-source-map' : false,
+	cache: cfg.production === false,
+	debug: cfg.production === false,
+	devtool: cfg.production ? false : 'cheap-module-inline-source-map',
 	// Allow validation for custom loader configs
 	webpackSchemaExtension: {
 		webpackSchemaExtension: Joi.any()

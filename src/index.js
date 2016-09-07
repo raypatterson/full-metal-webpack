@@ -1,7 +1,9 @@
 'use strict';
 
-const WebpackDevServer = require('webpack-dev-server');
 const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const Dashboard = require('webpack-dashboard');
+const DashboardPlugin = require('webpack-dashboard/plugin');
 
 const cfg = require('@raypatterson/sws-config');
 
@@ -43,12 +45,19 @@ const startDevServer = webpackConfig => {
 
 	console.log('Starting Dev Server');
 
+	if (cfg.debug === false) {
+
+		const dashboard = new Dashboard();
+
+		webpackConfig.plugins.push(new DashboardPlugin(dashboard.setData));
+
+	}
+
 	const server = new WebpackDevServer(webpack(webpackConfig), {
 
-		// contentBase: options.cfg.file.dest,
 		hot: true,
-		quiet: false,
-		noInfo: false,
+		quiet: cfg.debug === false,
+		noInfo: cfg.debug === false,
 		publicPath: '/',
 		stats: {
 			colors: true

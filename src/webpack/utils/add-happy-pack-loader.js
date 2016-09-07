@@ -17,6 +17,9 @@ module.exports = (loaderId, loaders, webpackConfig) => {
 	if (cfg.production === false) {
 
 		webpackConfig.plugins.push(new HappyPack({
+			cache: true,
+			debug: cfg.debug,
+			verbose: cfg.debug,
 			tempDir: cfg.file.absolute.happypack,
 			id: happyPackId,
 			threadPool: happyThreadPool,

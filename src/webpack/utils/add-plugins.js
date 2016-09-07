@@ -13,13 +13,21 @@ module.exports = function addPlugins(webpackConfig) {
 
 	const reportStatus = (name, mode, flag, status) => {
 
-		console.info(`${status} '${name}' plugin while ${mode} mode is ${flag || flag === undefined ? 'active' : 'inactive'}.`);
+		if (cfg.debug === true) {
+
+			console.info(`${status} '${name}' plugin while ${mode} mode is ${flag || flag === undefined ? 'active' : 'inactive'}.`);
+
+		}
 
 	};
 
 	const reportWarn = (name, mode) => {
 
-		console.warn(`No ${mode} mode for '${name}' plugin.`);
+		if (cfg.debug === true) {
+
+			console.warn(`No ${mode} mode for '${name}' plugin.`);
+
+		}
 
 	};
 
@@ -89,7 +97,6 @@ module.exports = function addPlugins(webpackConfig) {
 		'if-changed:no-production',
 		'open-browser:no-production',
 		// Load in production
-		'clean-dest:production',
 		'optimize-output:production',
 		'stats-graph:production',
 		// Load in debug
