@@ -4,14 +4,28 @@ const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const Dashboard = require('webpack-dashboard');
 const DashboardPlugin = require('webpack-dashboard/plugin');
+const liveServer = require('live-server');
 
 const cfg = require('@raypatterson/sws-config');
 
 const webpackConfig = require('../webpack.config');
 
+const startPreviewServer = () => {
+
+	console.log('Starting Preview');
+
+	liveServer.start({
+		port: cfg.server.port + 1,
+		host: cfg.server.host,
+		root: cfg.file.dest,
+		open: true
+	});
+
+};
+
 const startProductionBuild = webpackConfig => {
 
-	console.log('Starting Build');
+	console.info('Starting Build');
 
 	webpack(webpackConfig, (err, stats) => {
 
@@ -37,13 +51,19 @@ const startProductionBuild = webpackConfig => {
 
 		console.info('Build Successful');
 
+		if (cfg.open) {
+
+			startPreviewServer();
+
+		}
+
 	});
 
 };
 
 const startDevServer = webpackConfig => {
 
-	console.log('Starting Dev Server');
+	console.info('Starting Dev Server');
 
 	if (cfg.debug === false) {
 
@@ -65,7 +85,7 @@ const startDevServer = webpackConfig => {
 
 	});
 
-	server.listen(cfg.server.port, cfg.server.domain, err => {
+	server.listen(cfg.server.port, cfg.server.host, err => {
 
 		if (err) {
 

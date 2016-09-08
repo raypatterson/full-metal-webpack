@@ -96,9 +96,6 @@ module.exports = function addPlugins(webpackConfig) {
 		'hot-module:no-production',
 		'if-changed:no-production',
 		'open-browser:no-production',
-		// Load in production
-		'optimize-output:production',
-		'stats-graph:production',
 		// Load in debug
 		'debug-flag:debug',
 		// Load always
@@ -108,7 +105,10 @@ module.exports = function addPlugins(webpackConfig) {
 		 * TODO: Make code splitting optional?
 		 */
 		'common-chunks',
-		'split-path'
+		'split-path',
+		// Load in production
+		'optimize-output:production',
+		'stats-graph:production'
 
 	].reduce(filterPlugin, [])
 		.forEach(loadPlugin);

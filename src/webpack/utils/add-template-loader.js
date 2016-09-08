@@ -47,7 +47,7 @@ module.exports = function addTemplateLoader(entryName, webpackConfig) {
 	};
 
 	const entryTmpl = path.join(cfg.file.absolute.pages, entryName, cfg.file.bundle.tmpl);
-	const entryHtml = path.join(cfg.file.absolute.dest, entryName, cfg.file.bundle.html);
+	const entryHtml = path.join(entryName, cfg.file.bundle.html);
 
 	// Add parsing loader
 	let templateLoaders = [{
