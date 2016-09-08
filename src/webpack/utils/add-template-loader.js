@@ -11,7 +11,7 @@ const addCachedLoader = require('../utils/add-cached-loader');
 
 const getEntryData = require('./get-entry-data');
 
-module.exports = function addTemplateLoader(entryName, webpackConfig) {
+module.exports = function addTemplateLoader(pageSlug, webpackConfig) {
 
 	// Allow config to pass validation
 	webpackConfig.webpackSchemaExtension.passthough = Joi.any();
@@ -46,8 +46,14 @@ module.exports = function addTemplateLoader(entryName, webpackConfig) {
 		}
 	};
 
-	const entryTmpl = path.join(cfg.file.absolute.pages, entryName, cfg.file.bundle.tmpl);
-	const entryHtml = path.join(entryName, cfg.file.bundle.html);
+	const root = cfg.file.absolute.source;
+	const pagePath = path.join(cfg.file.absolute.pages, pageSlug);
+
+	const rootPathRelative = path.relative(root, pagePath);
+	const pagePathRelative = path.relative(pagePath, root);
+
+	const pageTmpl = path.join(rootPathRelative, cfg.file.bundle.tmpl);
+	const pageHtml = path.join(pageSlug, cfg.file.bundle.html);
 
 	// Add parsing loader
 	let templateLoaders = [{
@@ -56,7 +62,7 @@ module.exports = function addTemplateLoader(entryName, webpackConfig) {
 			attrs: [
 				'img:src'
 			],
-			root: cfg.file.absolute.source
+			root: pagePathRelative
 		}
 	}];
 
@@ -69,7 +75,7 @@ module.exports = function addTemplateLoader(entryName, webpackConfig) {
 	templateLoaders = templateLoaders.concat([{
 		loader: 'passthough-loader'
 	}, {
-		loader: entryTmpl
+		loader: pageTmpl
 	}]);
 
 	// Cache loaders
@@ -79,7 +85,7 @@ module.exports = function addTemplateLoader(entryName, webpackConfig) {
 	templateLoaders = [{
 		loader: 'file-loader',
 		query: {
-			name: entryHtml
+			name: pageHtml
 		}
 	}, {
 		loader: 'extract-loader'

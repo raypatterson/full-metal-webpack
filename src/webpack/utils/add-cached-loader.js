@@ -11,8 +11,8 @@ module.exports = (uid, loaders) => {
 		loaders.unshift({
 			loader: 'cached-loader',
 			query: {
-				cacheDirectory: cfg.file.absolute.cached,
-				cacheIdentifier: path.join(cfg.file.absolute.cached, `cached-${uid}`)
+				cacheDirectory: cfg.file.cached,
+				cacheIdentifier: path.join(cfg.file.cached, `cached-${uid}`)
 			}
 		});
 

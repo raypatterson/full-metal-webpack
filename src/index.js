@@ -4,7 +4,9 @@ const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const Dashboard = require('webpack-dashboard');
 const DashboardPlugin = require('webpack-dashboard/plugin');
-const liveServer = require('live-server');
+const httpServer = require('http-server');
+// const liveServer = require('live-server');
+const opener = require('opener');
 
 const cfg = require('@raypatterson/sws-config');
 
@@ -12,13 +14,16 @@ const webpackConfig = require('../webpack.config');
 
 const startPreviewServer = () => {
 
-	console.log('Starting Preview');
+	console.log('Starting Preview Server');
 
-	liveServer.start({
-		port: cfg.server.port + 1,
-		host: cfg.server.host,
-		root: cfg.file.dest,
-		open: true
+	httpServer.createServer({
+		root: cfg.file.dest
+	}).listen(cfg.server.port, cfg.server.host, () => {
+
+		opener(cfg.server.url);
+
+		console.log(`Preview Server started at: ${cfg.server.url}`);
+
 	});
 
 };
