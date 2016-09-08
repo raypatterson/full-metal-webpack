@@ -27,6 +27,13 @@ module.exports = webpackConfig => {
 			 */
 			process.argv.push('--quiet');
 
+		} else {
+
+			/**
+			 * NOTE: Increases output from Customizr
+			 */
+			process.argv.push('--verbose');
+
 		}
 
 		const LOADER_ID = 'modernizr';

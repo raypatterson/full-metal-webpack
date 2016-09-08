@@ -107,6 +107,7 @@ module.exports = function addPlugins(webpackConfig) {
 		'common-chunks',
 		'split-path',
 		// Load in production
+		'show-progress:production',
 		'stats-graph:production',
 		'optimize-output:production'
 
