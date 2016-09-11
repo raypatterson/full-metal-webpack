@@ -5,13 +5,14 @@ const Joi = require('webpack-validator').Joi;
 
 const cfg = require('@raypatterson/sws-config');
 
+const getFilename = require('./utils/get-output-name');
 const modulesPath = require('./utils/get-modules-path');
 
 /**
  *  Config
  */
 
-const defaultFilename = path.join(cfg.wp.outputName, cfg.file.bundle.js);
+const defaultFilename = getFilename(cfg.file.bundle.js);
 
 const resolveLoaderRoot = modulesPath.root;
 

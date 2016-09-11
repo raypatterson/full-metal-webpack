@@ -6,7 +6,6 @@ const cfg = require('@raypatterson/sws-config');
 
 /**
  * TODO: Import project plugins
- * TODO: Not sure how to use `NoErrorsPlugin` plugin with ESLint warnings. https://github.com/MoOx/eslint-loader#noerrorsplugin
  */
 
 module.exports = function addPlugins(webpackConfig) {
@@ -111,7 +110,6 @@ module.exports = function addPlugins(webpackConfig) {
 		'stats-graph:production',
 		'optimize-output:production'
 
-	].reduce(filterPlugin, [])
-		.forEach(loadPlugin);
+	].reduce(filterPlugin, []).forEach(loadPlugin);
 
 };

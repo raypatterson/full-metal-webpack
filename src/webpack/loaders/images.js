@@ -5,6 +5,8 @@ const combineLoaders = require('webpack-combine-loaders');
 
 const cfg = require('@raypatterson/sws-config');
 
+const outputPath = require('../utils/get-output-path');
+
 /**
  * TODO: Figure out why cache loader doesn't work with images.
  */
@@ -15,7 +17,7 @@ module.exports = webpackConfig => {
 		loader: 'url-loader',
 		query: {
 			limit: cfg.wp.maxInlineFileSizeLimit,
-			name: cfg.wp.outputPath
+			name: outputPath
 		}
 	}];
 

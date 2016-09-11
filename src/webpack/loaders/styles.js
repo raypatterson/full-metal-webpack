@@ -1,6 +1,5 @@
 'use strict';
 
-const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const combineLoaders = require('webpack-combine-loaders');
 const autoprefixer = require('autoprefixer');
@@ -10,6 +9,7 @@ const cfg = require('@raypatterson/sws-config');
 
 const addHappyPackLoader = require('../utils/add-happy-pack-loader');
 const addCachedLoader = require('../utils/add-cached-loader');
+const getFilename = require('../utils/get-output-name');
 
 module.exports = webpackConfig => {
 
@@ -110,7 +110,7 @@ module.exports = webpackConfig => {
 	// Configure ExtractTextPlugin
 	webpackConfig.plugins.push(
 		new ExtractTextPlugin(
-			path.join(cfg.wp.outputName, cfg.file.bundle.css), {
+			getFilename(cfg.file.bundle.css), {
 				allChunks: true
 			}));
 

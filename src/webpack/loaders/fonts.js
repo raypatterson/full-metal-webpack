@@ -6,6 +6,7 @@ const cfg = require('@raypatterson/sws-config');
 
 const addHappyPackLoader = require('../utils/add-happy-pack-loader');
 const addCachedLoader = require('../utils/add-cached-loader');
+const outputPath = require('../utils/get-output-path');
 
 module.exports = webpackConfig => {
 
@@ -16,7 +17,7 @@ module.exports = webpackConfig => {
 	let woffLoaders = [{
 		loader: 'url-loader',
 		query: {
-			name: cfg.wp.outputPath,
+			name: outputPath,
 			limit: cfg.wp.maxInlineFileSizeLimit,
 			mimetype: 'application/font-woff'
 		}
@@ -38,7 +39,7 @@ module.exports = webpackConfig => {
 	let fontLoaders = [{
 		loader: 'file-loader',
 		query: {
-			name: cfg.wp.outputPath
+			name: outputPath
 		}
 	}];
 

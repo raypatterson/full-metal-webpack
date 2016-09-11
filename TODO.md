@@ -1,10 +1,8 @@
 # TODO
 
-[] Compress images
-*   [compression-webpack-plugin](https://github.com/webpack/compression-webpack-plugin)
 [] Asset fingerprinting
-*   [html-hash-webpack-plugin](https://github.com/juanmaorta/html-hash-webpack-plugin)
-[] Gzip
+[] Add SASS to entry points?
+[] Add BrowserSync to reload markup
 [] DLL vendor libs
 [] Add favicons
 *   [favicons-webpack-plugin](https://github.com/jantimon/favicons-webpack-plugin)
