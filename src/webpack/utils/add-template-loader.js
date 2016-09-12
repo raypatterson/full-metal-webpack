@@ -55,6 +55,8 @@ module.exports = function addTemplateLoader(pageSlug, webpackConfig) {
 	const pageTmpl = path.join(rootPathRelative, cfg.file.bundle.tmpl);
 	const pageHtml = path.join(pageSlug, cfg.file.bundle.html);
 
+	console.log('pagePathRelative', pagePathRelative);
+
 	// Add parsing loader
 	let templateLoaders = [{
 		loader: 'html-loader',
