@@ -6,7 +6,6 @@ const Joi = require('webpack-validator').Joi;
 
 const cfg = require('@raypatterson/sws-config');
 
-const addHappyPackLoader = require('../utils/add-happy-pack-loader');
 const addCachedLoader = require('../utils/add-cached-loader');
 
 const getEntryData = require('./get-entry-data');
@@ -55,9 +54,7 @@ module.exports = function addTemplateLoader(pageSlug, webpackConfig) {
 	const pageTmpl = path.join(rootPathRelative, cfg.file.bundle.tmpl);
 	const pageHtml = path.join(pageSlug, cfg.file.bundle.html);
 
-	console.log('pagePathRelative', pagePathRelative);
-
-	// Add parsing loader
+	// Add parsing loaders
 	let templateLoaders = [{
 		loader: 'html-loader',
 		query: {
@@ -66,19 +63,13 @@ module.exports = function addTemplateLoader(pageSlug, webpackConfig) {
 			],
 			root: pagePathRelative
 		}
-	}];
-
-	const LOADER_ID = 'templates';
-
-	// HappyPack loaders
-	templateLoaders = addHappyPackLoader(LOADER_ID, templateLoaders, webpackConfig);
-
-	// Add compile loader & entry point that do not work with HappyPack loader
-	templateLoaders = templateLoaders.concat([{
+	}, {
 		loader: 'passthough-loader'
 	}, {
 		loader: pageTmpl
-	}]);
+	}];
+
+	const LOADER_ID = 'templates';
 
 	// Cache loaders
 	templateLoaders = addCachedLoader(LOADER_ID, templateLoaders);
