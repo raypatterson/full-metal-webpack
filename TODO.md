@@ -24,3 +24,7 @@
 *   [assets-webpack-plugin](https://github.com/kossnocorp/assets-webpack-plugin)
 *   [chunk-manifest-webpack-plugin](https://github.com/diurnalist/chunk-manifest-webpack-plugin)
 *   [manifest-revision-webpack-plugin](https://github.com/nickjj/manifest-revision-webpack-plugin)
+
+[] Upgrade
+
+*   [case-sensitive-paths-webpack-plugin](https://github.com/Urthen/case-sensitive-paths-webpack-plugin)
