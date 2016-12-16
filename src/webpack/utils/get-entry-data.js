@@ -3,7 +3,7 @@
 const path = require('path');
 const fs = require('fs-jetpack');
 
-module.exports = function getEntryData(dir, filename) {
+module.exports = (dir, filename) => {
 
 	let data = {};
 
@@ -13,7 +13,9 @@ module.exports = function getEntryData(dir, filename) {
 
 	if (fs.exists(configPathJs)) {
 
+		/* eslint-disable import/no-dynamic-require */
 		data = require(configPathJs);
+		/* eslint-enable import/no-dynamic-require */
 
 	} else if (fs.exists(configPathJson)) {
 

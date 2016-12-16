@@ -9,7 +9,7 @@ const cfg = require('@raypatterson/sws-config');
  * TODO: Not sure how to use `NoErrorsPlugin` plugin with ESLint warnings. https://github.com/MoOx/eslint-loader#noerrorsplugin
  */
 
-module.exports = function addPlugins(webpackConfig) {
+module.exports = webpackConfig => {
 
 	const reportStatus = (name, mode, flag, status) => {
 
@@ -87,7 +87,9 @@ module.exports = function addPlugins(webpackConfig) {
 
 	const loadPlugin = name => {
 
+		/* eslint-disable import/no-dynamic-require */
 		require(path.join('../plugins', name))(webpackConfig);
+		/* eslint-enable import/no-dynamic-require */
 
 	};
 

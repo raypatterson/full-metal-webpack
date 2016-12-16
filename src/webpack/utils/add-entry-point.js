@@ -7,7 +7,7 @@ const cfg = require('@raypatterson/sws-config');
 const devFiles = require('./get-dev-files');
 const addTemplateLoader = require('./add-template-loader');
 
-module.exports = function addEntryPoint(entryObject, entryPath, webpackConfig) {
+module.exports = (entryObject, entryPath, webpackConfig) => {
 
 	const entryName = path.dirname(entryPath);
 

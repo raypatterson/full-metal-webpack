@@ -10,14 +10,14 @@ const addCachedLoader = require('../utils/add-cached-loader');
 
 const getEntryData = require('./get-entry-data');
 
-module.exports = function addTemplateLoader(pageSlug, webpackConfig) {
+module.exports = (pageSlug, webpackConfig) => {
 
 	// Allow config to pass validation
 	webpackConfig.webpackSchemaExtension.passthough = Joi.any();
 
 	// Add config
 	webpackConfig.passthough = {
-		callback: function renderTemplate(source, loader) {
+		callback: (source, loader) => {
 
 			loader.cacheable();
 

@@ -3,10 +3,9 @@
 const combineLoaders = require('webpack-combine-loaders');
 const HappyPack = require('happypack');
 
-// eslint-disable-next-line babel/new-cap
-const happyThreadPool = HappyPack.ThreadPool({
-	size: 7
-});
+/* eslint-disable new-cap */
+const happyThreadPool = HappyPack.ThreadPool({size: 7});
+/* eslint-enable new-cap */
 
 const cfg = require('@raypatterson/sws-config');
 

@@ -16,14 +16,14 @@ module.exports = webpackConfig => {
 	// PostCSS Loader
 
 	/**
-	 * NOTE: PoseCSS loader doesn't work with HappyPack
+	 * NOTE: PostCSS loader doesn't work with HappyPack
 	 */
 
 	// Allow PostCSS config to pass validation
 	webpackConfig.webpackSchemaExtension.postcss = Joi.any();
 
 	// Add PostCSS config
-	webpackConfig.postcss = function postcss() {
+	webpackConfig.postcss = () => {
 
 		return [
 			autoprefixer

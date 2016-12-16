@@ -3,7 +3,7 @@
 const _ = require('lodash');
 const reqAll = require('req-all');
 
-module.exports = function addLoaders(webpackConfig) {
+module.exports = webpackConfig => {
 
 	/**
 	 * Import loader presets
