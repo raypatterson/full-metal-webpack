@@ -14,9 +14,9 @@ module.exports = (loaderId, loaders, webpackConfig) => {
 
 	const happyPackId = `happypack-${loaderId}`;
 
-	if (cfg.production === false) {
+	if (cfg.happy === true && cfg.production === false) {
 
-		webpackConfig.plugins.push(new HappyPack({
+		webpackConfig.plugins.unshift(new HappyPack({
 			cache: true,
 			debug: cfg.debug,
 			verbose: cfg.debug,
@@ -30,7 +30,7 @@ module.exports = (loaderId, loaders, webpackConfig) => {
 
 	}
 
-	return cfg.production === false ? [{
+	return (cfg.happy === true && cfg.production === false) ? [{
 		loader: 'happypack/loader',
 		query: {
 			id: happyPackId

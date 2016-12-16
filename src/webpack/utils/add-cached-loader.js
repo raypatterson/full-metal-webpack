@@ -6,7 +6,7 @@ const cfg = require('@raypatterson/sws-config');
 
 module.exports = (uid, loaders) => {
 
-	if (cfg.production === false) {
+	if (cfg.cached === true && cfg.production === false) {
 
 		loaders.unshift({
 			loader: 'cached-loader',

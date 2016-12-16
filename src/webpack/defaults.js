@@ -54,7 +54,9 @@ const webpackConfig = {
 		 */
 		fallback: path.join(resolveLoaderRoot, cfg.file.node)
 	},
+	prePlugins: [],
 	plugins: [],
+	postPlugins: [],
 	module: {
 		preLoaders: [],
 		loaders: [],
@@ -62,11 +64,12 @@ const webpackConfig = {
 	},
 	cache: cfg.production === false,
 	debug: cfg.production === false,
-	devtool: cfg.production ? false : 'cheap-module-inline-source-map',
-	// Allow validation for custom loader configs
-	webpackSchemaExtension: {
-		webpackSchemaExtension: Joi.any()
-	}
+	devtool: cfg.production ? false : 'cheap-module-inline-source-map'
+};
+
+// Allow validation for custom loader configs
+webpackConfig.webpackSchemaExtension = {
+	webpackSchemaExtension: Joi.any()
 };
 
 module.exports = webpackConfig;

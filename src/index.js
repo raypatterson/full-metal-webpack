@@ -5,7 +5,6 @@ const WebpackDevServer = require('webpack-dev-server');
 const Dashboard = require('webpack-dashboard');
 const DashboardPlugin = require('webpack-dashboard/plugin');
 const httpServer = require('http-server');
-// const liveServer = require('live-server');
 const opener = require('opener');
 
 const cfg = require('@raypatterson/sws-config');
