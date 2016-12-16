@@ -54,9 +54,7 @@ const webpackConfig = {
 		 */
 		fallback: path.join(resolveLoaderRoot, cfg.file.node)
 	},
-	prePlugins: [],
 	plugins: [],
-	postPlugins: [],
 	module: {
 		preLoaders: [],
 		loaders: [],
