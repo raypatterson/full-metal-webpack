@@ -9,8 +9,12 @@
 	],
 	"rules": {
 		"padded-blocks": [
-			1,
+			"warn",
 			"always"
+		],
+		"func-names": [
+			"warn",
+			"as-needed"
 		]
 	}
 }
