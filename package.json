@@ -17,11 +17,7 @@
     "ghooks": {
       "pre-commit": "npm run lint",
       "pre-push": "npm run test"
-    },
-    "links": [
-      "../passthough-loader",
-      "../sws-config"
-    ]
+    }
   },
   "contributors": [
     {
@@ -31,67 +27,67 @@
   ],
   "dependencies": {
     "@raypatterson/sws-config": "raypatterson/sws-config",
-    "autoprefixer": "^6.4.1",
-    "cached-loader": "^0.1.1",
-    "css-loader": "^0.26.1",
-    "customizr": "^1.0.0-alpha",
-    "del": "^2.2.2",
-    "eslint": "^3.12.2",
-    "eslint-config-xo": "^0.17.0",
-    "eslint-loader": "^1.5.0",
-    "extract-loader": "^0.1.0",
-    "extract-text-webpack-plugin": "^1.0.1",
-    "file-loader": "^0.9.0",
-    "force-case-sensitivity-webpack-plugin": "^0.2.1",
-    "fs-jetpack": "^0.10.5",
-    "globby": "^6.0.0",
-    "happypack": "^3.0.1",
-    "html-loader": "^0.4.3",
-    "http-server": "^0.9.0",
-    "image-webpack-loader": "^3.1.0",
-    "json-loader": "^0.5.4",
-    "lodash": "^4.12.0",
-    "look-up": "^0.8.3",
-    "modernizr-auto-loader": "0.0.2",
-    "node-sass": "^4.0.0",
-    "only-if-changed-webpack-plugin": "0.0.1",
-    "open-browser-webpack-plugin": "0.0.3",
-    "opener": "^1.4.1",
-    "optimize-css-assets-webpack-plugin": "^1.3.0",
-    "passthough-loader": "raypatterson/passthough-loader",
-    "pkg-dir": "^1.0.0",
-    "postcss-loader": "^1.2.1",
-    "progress-bar-webpack-plugin": "^1.9.0",
-    "req-all": "^0.1.0",
-    "sass-loader": "^4.0.2",
-    "stats-webpack-plugin": "^0.4.2",
-    "style-loader": "^0.13.1",
-    "stylelint-config-standard": "^15.0.0",
-    "stylelint-webpack-plugin": "^0.4.0",
-    "url-loader": "^0.5.7",
-    "webpack": "^1.13.1",
-    "webpack-combine-loaders": "^2.0.0",
-    "webpack-dashboard": "^0.2.0",
-    "webpack-dev-server": "^1.15.1",
-    "webpack-split-by-path": "^0.1.0",
-    "webpack-stats-plugin": "^0.1.3",
-    "webpack-validator": "^2.2.7",
-    "webpack-visualizer-plugin": "^0.1.5"
+    "autoprefixer": "~6.7.0",
+    "cached-loader": "~0.1.1",
+    "css-loader": "~0.26.1",
+    "customizr": "1.0.0-alpha",
+    "del": "~2.2.2",
+    "eslint": "~3.14.0",
+    "eslint-config-xo": "~0.17.0",
+    "eslint-loader": "~1.6.1",
+    "extract-loader": "~0.1.0",
+    "extract-text-webpack-plugin": "~1.0.1",
+    "file-loader": "~0.9.0",
+    "force-case-sensitivity-webpack-plugin": "~0.2.1",
+    "fs-jetpack": "~0.10.5",
+    "globby": "~6.1.0",
+    "happypack": "~3.0.2",
+    "html-loader": "~0.4.4",
+    "http-server": "~0.9.0",
+    "image-webpack-loader": "~3.1.0",
+    "json-loader": "~0.5.4",
+    "lodash": "~4.17.4",
+    "look-up": "~0.8.3",
+    "modernizr-auto-loader": "~0.1.0",
+    "node-sass": "~4.3.0",
+    "only-if-changed-webpack-plugin": "~0.0.1",
+    "open-browser-webpack-plugin": "~0.0.3",
+    "opener": "~1.4.2",
+    "optimize-css-assets-webpack-plugin": "~1.3.0",
+    "passthrough-loader": "raypatterson/passthrough-loader",
+    "pkg-dir": "~1.0.0",
+    "postcss-loader": "~1.2.2",
+    "progress-bar-webpack-plugin": "~1.9.3",
+    "req-all": "~1.0.0",
+    "sass-loader": "~4.1.1",
+    "stats-webpack-plugin": "~0.4.3",
+    "style-loader": "~0.13.1",
+    "stylelint-config-standard": "~15.0.1",
+    "stylelint-webpack-plugin": "~0.5.1",
+    "url-loader": "~0.5.7",
+    "webpack": "~1.14.0",
+    "webpack-combine-loaders": "~2.0.3",
+    "webpack-dashboard": "~0.2.1",
+    "webpack-dev-server": "~1.16.2",
+    "webpack-split-by-path": "~0.1.0",
+    "webpack-stats-plugin": "~0.1.4",
+    "webpack-validator": "~2.3.0",
+    "webpack-visualizer-plugin": "~0.1.10"
   },
   "devDependencies": {
-    "blue-tape": "^1.0.0",
-    "commitizen": "^2.8.1",
-    "cz-conventional-changelog": "^1.1.6",
-    "faucet": "0.0.1",
-    "fixpack": "^2.3.1",
-    "ghooks": "^1.2.1",
-    "linkr": "^0.1.0",
-    "updtr": "^0.2.1",
-    "xo": "^0.17.1"
+    "blue-tape": "~1.0.0",
+    "commitizen": "~2.9.5",
+    "cz-conventional-changelog": "~1.1.6",
+    "eslint": "~3.14.0",
+    "eslint-config-xo": "~0.17.0",
+    "faucet": "~0.0.1",
+    "fixpack": "~2.3.1",
+    "ghooks": "~2.0.0",
+    "npm-autolink": "~0.4.1",
+    "updtr": "~0.2.3"
   },
   "engines": {
-    "node": ">=6.1.0",
-    "npm": ">=3.10.0"
+    "node": ">=6"
   },
   "homepage": "https://github.com/raypatterson/full-metal-webpack/",
   "keywords": [
@@ -109,27 +105,12 @@
   },
   "scripts": {
     "commit": "git-cz",
-    "link": "linkr",
-    "link:rm": "linkr remove && npm i",
+		"link": "npm-autolink",
+    "link:rm": "npm-autolink remove",
     "lint": "xo --fix",
     "test": "npm run test:pass",
     "test:fail": "exit 1",
     "test:pass": "exit 0",
     "upgrade": "updtr && fixpack"
-  },
-  "xo": {
-    "envs": [
-      "node",
-      "commonjs"
-    ],
-    "esnext": true,
-    "space": false,
-    "globals": [],
-    "rules": {
-      "padded-blocks": [
-        1,
-        "always"
-      ]
-    }
   }
 }

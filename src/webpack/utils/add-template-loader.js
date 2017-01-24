@@ -13,10 +13,10 @@ const getEntryData = require('./get-entry-data');
 module.exports = (pageSlug, webpackConfig) => {
 
 	// Allow config to pass validation
-	webpackConfig.webpackSchemaExtension.passthough = Joi.any();
+	webpackConfig.webpackSchemaExtension.passthrough = Joi.any();
 
 	// Add config
-	webpackConfig.passthough = {
+	webpackConfig.passthrough = {
 		callback: (source, loader) => {
 
 			loader.cacheable();
@@ -64,7 +64,7 @@ module.exports = (pageSlug, webpackConfig) => {
 			root: pagePathRelative
 		}
 	}, {
-		loader: 'passthough-loader'
+		loader: 'passthrough-loader'
 	}, {
 		loader: pageTmpl
 	}];
