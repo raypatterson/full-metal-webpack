@@ -96,7 +96,6 @@ module.exports = webpackConfig => {
 	[
 		// Skip in production
 		'hot-module:no-production',
-		'if-changed:no-production',
 		'open-browser:no-production',
 		// Load in debug
 		'debug-flag:debug',

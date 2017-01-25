@@ -1,21 +1,23 @@
 # TODO
 
-[] Compress images
-*   [compression-webpack-plugin](https://github.com/webpack/compression-webpack-plugin)
-[] Asset fingerprinting
-*   [html-hash-webpack-plugin](https://github.com/juanmaorta/html-hash-webpack-plugin)
-[] Gzip
-[] DLL vendor libs
-[] Add favicons
-*   [favicons-webpack-plugin](https://github.com/jantimon/favicons-webpack-plugin)
+[] [babel-loader](https://github.com/babel/babel-loader)
+[] [compression-webpack-plugin](https://github.com/webpack/compression-webpack-plugin)
+[] [html-hash-webpack-plugin](https://github.com/juanmaorta/html-hash-webpack-plugin)
+[] [html-webpack-plugin](https://github.com/ampedandwired/html-webpack-plugin)
+[] [favicons-webpack-plugin](https://github.com/jantimon/favicons-webpack-plugin)
+[] [broken-link-checker](https://github.com/stevenvachon/broken-link-checker)
 
-[] Improve debug logs
-[] Enable es6 modules
+Take a fresh look at:
+
+[] DLL vendor libs
 [] Upgrade to webpack 2
-[] Make entire library async
-[] Add Browsersync server
+[] Improve debug logs
+[] Enable es6 + modules
+[] Add Browsersync
+[] Make entire library async? Is this possible with dynamic requires?
 [] Investigate
 
+*   [webpack-blocks](https://github.com/andywer/webpack-blocks)
 *   [webpack-config](https://github.com/mdreizin/webpack-config)
 *   [webpack-config-utils](https://github.com/kentcdodds/webpack-config-utils)
 *   [terse-webpack](https://github.com/ericclemmons/terse-webpack)
