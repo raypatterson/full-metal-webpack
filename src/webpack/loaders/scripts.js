@@ -5,9 +5,11 @@ const combineLoaders = require('webpack-combine-loaders');
 
 const cfg = require('@raypatterson/sws-config');
 
-const resourceConfig = require('../utils/get-resource-config')('eslint');
+const getResourceConfig = require('../utils/get-resource-config');
 
-// const getHappyPackLoader = require('../utils/get-happy-pack-loader');
+const eslintConfig = getResourceConfig('eslint');
+const babelConfig = getResourceConfig('babel');
+
 const addHappyPackLoader = require('../utils/add-happy-pack-loader');
 const addCachedLoader = require('../utils/add-cached-loader');
 
@@ -26,7 +28,7 @@ module.exports = webpackConfig => {
 		failOnError: true,
 		fix: true,
 		cache: true,
-		configFile: resourceConfig
+		configFile: eslintConfig
 	};
 
 	let scriptsLoaders = [{
@@ -51,6 +53,22 @@ module.exports = webpackConfig => {
 		exclude: [
 			new RegExp(cfg.file.node)
 		]
+	});
+
+	scriptsLoaders = [{
+		loader: 'babel-loader'
+	}];
+
+	webpackConfig.module.loaders.push({
+		test: /\.js$/i,
+		loader: combineLoaders(scriptsLoaders),
+		exclude: [
+			new RegExp(cfg.file.node)
+		],
+		query: {
+			cacheDirectory: !cfg.production,
+			extends: babelConfig
+		}
 	});
 
 };
